@@ -1,20 +1,30 @@
 body {
-    margin: 0;
-    background-color: red;
-    background-image: url('https://i.pinimg.com/originals/ac/ca/fb/accafba233bebe11a68c7711761fed16.jpg');
+    margin: 5rem;
+    height: calc(100vh - 10rem);
+    background-color: #836948;
+    background-image: url('./rsc/glasses.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 6rem;
 }
 
-h1 {
-    color: white;
+h3 {
+    font-size: 6rem;
+    margin: 1rem;
+    text-align: center;
+    color: #ffffff;
 }
 
 h4 {
-    color: white;
+    font-size: 3rem;
+    margin: 1rem;
+    text-align: center;
+    color: #ffffff;
 }
 
 .contents {
+    display: block;
     width: auto;
-    height: auto;
     margin: auto;
 }
 
@@ -27,5 +37,11 @@ h4 {
 }
 
 .js-text {
+    width: auto;
+}
+
+.js-form input {
+    display: block;
+    margin: auto;
     width: auto;
 }
