@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    background-color: red;
+    background-image: url('https://i.pinimg.com/originals/ac/ca/fb/accafba233bebe11a68c7711761fed16.jpg');
+}
+
+h1 {
+    color: white;
+}
+
+h4 {
+    color: white;
+}
+
+.contents {
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+
+.js-clock {
+    width: auto;
+}
+
+.js-form {
+    width: auto;
+}
+
+.js-text {
+    width: auto;
+}
