@@ -32,11 +32,24 @@ h4 {
     width: auto;
 }
 
-.js-form {
+.js-form.hide{
     width: auto;
+    visibility: hidden;
 }
 
-.js-text {
+.js-text.hide{
+    width: auto;
+    visibility: hidden;
+}
+
+.js-toDo.hide{
+    width: auto;
+    visibility: hidden;
+}
+
+.js-toDo input {
+    display: block;
+    margin: auto;
     width: auto;
 }
 

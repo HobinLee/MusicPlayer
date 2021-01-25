@@ -17,8 +17,11 @@ function loadInfo() {
   const currentUser = localStorage.getItem(USER_LS);
 
   if(currentUser === null) {
+    text.classList.add("hide");
+    form.classList.remove("hide");
   } else {
-    form.classList.remove("showing");
+    form.classList.add("hide");
+    text.classList.remove("hide");
     text.innerText = `Hello ${currentUser}!`;
   }
 }
