@@ -1,0 +1,7 @@
+body {
+  margin: 5rem;
+  height: calc(100vh - 10rem);
+  background-color: #131220;
+  display: grid;
+  grid-auto-columns: auto, 1fr;
+}

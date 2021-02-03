@@ -2,10 +2,12 @@ body {
     margin: 5rem;
     height: calc(100vh - 10rem);
     background-color: #836948;
-    background-image: url('./rsc/glasses.svg');
+    background-image: url('../rsc/glasses.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 6rem;
+    display: grid;
+    grid-auto-columns: auto, 1fr;
 }
 
 h3 {
