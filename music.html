@@ -1,17 +1,18 @@
 <html>
   <header>
     <title>Hov's Film List</title>
-    <link rel="stylesheet" href="./css/music.css"/>
+    <link rel="stylesheet" href="./css/film.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
     <link rel="stylesheet" href="./css/menu.css"/>
   </header>
   <body>
     <div class ="hov-music-contents-wrapper">
-      <audio controls class = "hov-music-content">
-        <source src="./rsc/music/la la la lovesong - 백예린.mp3" type="audio/mpeg">
-      </audio>
+      <div id="waveform"></div>
+      </div>
     </div>
     <div class="hov-menu-wrapper"></div>
     <script src="./js/menu.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="./js/music.js"></script>
   </body>
 </html>
