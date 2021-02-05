@@ -16,8 +16,9 @@
   background-color: transparent;
   border: none;
   outline: none;
-  width:  2em;
-  height: 2em;
+  width:  2.5em;
+  height: 2.5em;
+  cursor: pointer;
   transition-duration: 0.3s;
 }
 
@@ -26,16 +27,19 @@
   filter: invert(100%) sepia(0%);
 }
 
-.hov-menu-button :hover {
-  width: 3.8em;
-  height: 3.8em;
+.hov-menu-button:hover {
+  width: 3em;
+  height: 3em;
   transition-duration: 0.3s;
   cursor: pointer;
 }
-.hov-menu-button :active {
+.hov-menu-button:active {
   border: none;
 }
-.hov-menu-button img :hover {
+.hov-menu-button img:hover {
+  width: 3em;
+  height: 3em;
+  transition-duration: 0.3s;
   opacity: 1;
 }
 
