@@ -1,18 +1,39 @@
 <html>
-  <header>
+  <head>
+    <meta charset="UTF-8"/>
     <title>Hov's Film List</title>
-    <link rel="stylesheet" href="./css/film.css"/>
+    <link rel="stylesheet" href="./css/music.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
     <link rel="stylesheet" href="./css/menu.css"/>
-  </header>
+  </head>
   <body>
-    <div class ="hov-music-contents-wrapper">
-      <div id="waveform"></div>
+    <div class = "hov-music-contents-wrapper">
+      <div class = "hov-music-info-section">
+        <div class = "hov-music-music-title"></div>
+        <div class = "hov-music-music-singer"></div>
+        <div class = "hov-music-play-list"></div>
+      </div>
+      <div class = "hov-music-control-section">
+        <div class = "hov-music-bar">
+          <button class = "hov-music-controller">
+            <div class = "hov-music-controller-circle"></div>
+          </button>
+        </div>
+        <div class = "hov-music-buttons">
+          <button class = "hov-music-prev">
+            <img src='./rsc/uicons-regular-rounded/svg/fi-rr-rewind.svg' alt = 'play'/>
+          </button>
+          <button class = "hov-music-play">
+            <img src='./rsc/uicons-regular-rounded/svg/fi-rr-play.svg' alt = 'play'/>
+          </button>
+          <button class = "hov-music-next">
+            <img src='./rsc/uicons-regular-rounded/svg/fi-rr-forward.svg' alt = 'play'/>
+          </button>
+        </div>
       </div>
     </div>
     <div class="hov-menu-wrapper"></div>
     <script src="./js/menu.js"></script>
-    <script src="https://unpkg.com/wavesurfer.js"></script>
     <script src="./js/music.js"></script>
   </body>
 </html>

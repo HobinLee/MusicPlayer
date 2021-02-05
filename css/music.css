@@ -2,6 +2,94 @@ body {
   background-color: #131220;
 }
 
-.hov-music-content {
-  background-color: black;
+.hov-music-contents-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hov-music-music-title {
+  color: white;
+  font-size: 2em;
+  font-weight: lighter;
+  text-align: center;
+  margin-bottom: 0.25em;
+  opacity: 0.9;
+}
+
+.hov-music-music-singer {
+  color: white;
+  font-size: 0.8em;
+  font-weight: lighter;
+  text-align: center;
+  margin-bottom: 1em;
+  opacity: 0.9;
+}
+
+.hov-music-control-section {
+  height: auto;
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hov-music-bar {
+  display: inline;
+  width: 20em;
+  height: 0.05em;
+  opacity: 0.5;
+  background-color: white;
+}
+
+.hov-music-buttons { 
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3em;
+}
+
+.hov-music-buttons button{
+  width: 4em;
+  height: 4em;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.hov-music-buttons button img {
+  opacity: 0.5;
+  filter: invert(100%) sepia(0%);
+  transition-duration: 0.3s;
+}
+
+.hov-music-buttons button img:hover {
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+
+.hov-music-controller {
+  position: relative;
+  left: -1em;
+  top: -1em;
+  background-color: transparent;
+  display: inline-block;
+  outline: none;
+  border: none;
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+}
+
+.hov-music-controller-circle {
+  background-color: white;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 0.7em;
 }

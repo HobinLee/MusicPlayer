@@ -1,6 +1,6 @@
 body {
-  margin: 5rem;
-  height: calc(100vh - 10rem);
+  margin: 1em;
+  height: calc(100vh - 2em);
   display: grid;
-  grid-auto-columns: auto, 1fr;
+  grid-template-rows: 1fr 4em;
 }
