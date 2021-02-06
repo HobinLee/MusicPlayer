@@ -24,24 +24,58 @@ body {
   font-weight: lighter;
   text-align: center;
   margin-bottom: 1em;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .hov-music-control-section {
   height: auto;
   display: flex;
-  gap: 2em;
+  gap: 0.5em;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-items: stretch;
 }
 
 .hov-music-bar {
-  display: inline;
+  display: flex;
+  align-items: center;
   width: 20em;
-  height: 0.05em;
-  opacity: 0.5;
+  height: 0.06em;
+}
+
+.hov-music-time-bar {
   background-color: white;
+  width: 0%;
+  height: 100%;
+  border-radius: 0.06em;
+}
+
+.hov-music-controller {
+  position: relative;
+  top: -1em;
+  left: -1em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+
+  cursor: pointer;
+}
+
+.hov-music-controller-handle {
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 2em;
+  background-color: #89888F;
+}
+
+.hov-music-rest-bar {
+  background-color: #89888F;
+  flex: auto;
+  height: 100%;
+  border-radius: 0.06em;
 }
 
 .hov-music-buttons { 
@@ -74,22 +108,43 @@ body {
   transition-duration: 0.3s;
 }
 
-.hov-music-controller {
-  position: relative;
-  left: -1em;
-  top: -1em;
-  background-color: transparent;
-  display: inline-block;
-  outline: none;
-  border: none;
-  width: 2em;
-  height: 2em;
-  cursor: pointer;
-}
-
 .hov-music-controller-circle {
   background-color: white;
   width: 0.7em;
   height: 0.7em;
   border-radius: 0.7em;
+}
+
+.hov-music-time {
+  display: flex;
+  width: 20em;
+  justify-content: stretch;
+  justify-items: space-between;
+}
+
+.hov-music-current-time {
+  position: relative;
+  font-size: 0.8em;
+  top: 0;
+  left: 0;
+  color: white;
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.hov-music-total-time {
+  width: 100%;
+  font-size: 0.8em;
+  text-align: right;
+  top: 0;
+  right: -100;
+  color: #89888F;
+}
+
+.hov-music-info-section {
+  width: 20em;
+}
+
+.hov-music-music-title {
+  width: 100%;
 }
