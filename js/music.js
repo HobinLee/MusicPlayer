@@ -3,6 +3,9 @@ const
   playList = document.querySelector('.hov-music-play-list'),
   prevBTN = document.querySelector('.hov-music-prev'),
   playBTN = document.querySelector('.hov-music-play'),
+  listBTN = document.querySelector('.hov-music-list'),
+  listPanel = document.querySelector('.hov-music-list-wrapper'),
+  volumeBTN = document.querySelector('.hov-music-volume'),
   nextBTN = document.querySelector('.hov-music-next'),
   musicBar = document.querySelector('.hov-music-bar'),
   timeBar = document.querySelector('.hov-music-time-bar');
@@ -26,9 +29,11 @@ let musicIndex = 0,
   startMouse = null,
   startController = - controllerHalf+'px',
   audioList = null,
+  musicBTNList = null,
   mouseDown = null,
   jumpTime = null,
-  jumpDirection = 0;
+  jumpDirection = 0,
+  prevMusic = null;
 
 const JUMP_TIME = 5;
 
@@ -59,6 +64,79 @@ const musicList = [
     src: './rsc/music/난춘.mp3'
   }
 ]
+
+function findIndex(audio){
+  for(let i = 0 ; i < audioList.length ; i++) {
+    if (audioList[i].firstElementChild === audio) {
+      return i;
+    }
+  }
+  console.error('cannot find audio index');
+  return 0;
+}
+
+function jumpMusic(e) {
+  let target = e.target.parentNode;
+
+  while (target.nodeName != 'LI') {
+    target = target.parentNode;
+  }
+  
+  let newIndex = findIndex(target.firstElementChild);
+
+  if (musicIndex !== newIndex) {
+    musicIndex = newIndex;
+    setTargetMusic();
+  }
+}
+
+function createMusicElementBTN(music) {
+  const musicElement = document.createElement('li');
+  const thumbnail = document.createElement('div');
+  const info = document.createElement('div');
+  const moveBTN = document.createElement('button');
+  const musicTitle = document.createElement('h3');
+  const musicSinger = document.createElement('h4');
+  const audio = document.createElement('audio');
+  const moveIcon = new Image();
+
+  musicElement.className = "hov-music-element";
+  info.className = "hov-music-element-info";
+  thumbnail.className = "hov-music-element-thumbnail";
+  moveBTN.className = "hov-music-element-move";
+
+  moveIcon.src = "./rsc/uicons-regular-rounded/svg/fi-rr-interlining.svg";
+  moveIcon.alt = "order change";
+
+  moveBTN.appendChild(moveIcon);
+  musicTitle.innerText = music.title;
+  musicSinger.innerText = music.singer;
+
+  audio.src = music.src;
+  audio.id = music.title;
+
+  info.appendChild(musicTitle);
+  info.appendChild(musicSinger);
+  musicElement.appendChild(audio);
+  musicElement.appendChild(thumbnail);
+  musicElement.appendChild(info);
+  musicElement.appendChild(moveBTN);
+  playList.appendChild(musicElement);
+
+  //썸네일이나 제목부분 누르면 해당 음악 재생
+  thumbnail.addEventListener('click', jumpMusic);
+  info.addEventListener('click', jumpMusic);
+}
+
+function setCurrentMusicState() {
+  if (prevMusic) {
+    prevMusic.querySelector('.hov-music-element-info').style.opacity = 0.7;
+  }
+  const info = audioList[musicIndex].querySelector('.hov-music-element-info');
+  
+  info.style.opacity = 1;
+  prevMusic = audioList[musicIndex];
+}
 
 function musicPlayPause() {
   const musicList = playList.querySelectorAll('audio');
@@ -198,21 +276,13 @@ function jumpPlayTime() {
 }
 
 function setMusicList() {
-  musicList.forEach(music => {
-    const audio = document.createElement('audio');
-    audio.src = music.src;
-    audio.id = music.title;
-
-    playList.appendChild(audio);
-  })
-  audioList = playList.querySelectorAll('audio');
-
+  musicList.forEach(music => createMusicElementBTN(music));
+  audioList = playList.querySelectorAll('.hov-music-element');
   musicIndex = 0;
   setTargetMusic();
 }
 
 function loadFinish() {
-  console.log('load finish ' + musicList[musicIndex].title);
   setBar(0);
   setTotalTime();
   currentAudio.addEventListener('timeupdate', handleMusicProgress);
@@ -232,10 +302,12 @@ function setTargetMusic() {
   if (currentAudio) {
     currentAudio.pause();
   }
-  currentAudio = audioList[musicIndex];
+  
+  currentAudio = audioList[musicIndex].firstElementChild;
   currentAudio.load();
   currentAudio.addEventListener('loadeddata', loadFinish);
   controller.style.left = -controllerHalf;
+  setCurrentMusicState();
 }
 
 function startNextMusic() {
@@ -291,10 +363,22 @@ function offPress() {
   jumpTime = null;
 }
 
+function controlListPanel() {
+  if (listPanel.style.maxWidth === "0px") {
+    listPanel.style.maxWidth = "30em";
+    listBTN.firstElementChild.style.opacity = 1;
+  } else {
+    listPanel.style.maxWidth = "0";
+    listBTN.firstElementChild.style.opacity = 0.5;
+  }
+}
+
 function init() {
   setMusicList();
 
   playBTN.addEventListener('click', musicPlayPause);
+  listBTN.addEventListener('click', controlListPanel);
+
   controller.addEventListener('mousedown', startDrag);
   screen.addEventListener('mouseup', endDrag);
   screen.addEventListener('mousemove', onDrag);

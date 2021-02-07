@@ -1,12 +1,111 @@
 body {
   background-color: #131220;
 }
-
 .hov-music-contents-wrapper {
   display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-content: stretch;
+}
+
+.hov-music-player-wrapper {
+  display: flex;
+  flex: auto;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  align-content: center;
+}
+
+.hov-music-list-wrapper {
+  width: 30em;
+  max-width: null;
+  overflow: hidden;
+  transition: max-width 0.3s ease-out;
+}
+
+.hov-music-element {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  width: 20em;
+  height: 2.5em;
+  cursor: pointer;
+}
+
+.hov-music-element-info {
+  padding-left: 0.5em;
+  height: 2.5em;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: space-between;
+  flex: auto;
+  color: white;
+  opacity: 0.7;
+}
+
+.hov-music-element-move {
+  width: 3em;
+  height: 100%;
+  cursor: pointer;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+  opacity: 0.5;
+}
+
+.hov-music-element-move:hover {
+  opacity: 0.7;
+}
+
+.hov-music-element-move img {
+  width: 1.5em;
+  height: 1.5em;
+  filter: invert(100%) sepia(0%);
+}
+
+.hov-music-element-thumbnail {
+  width: 2.5em;
+  height: 2.5em;
+  background-color: #89888F;
+}
+
+.hov-music-element h3 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+.hov-music-element h4 {
+  font-size: 0.5em;
+  font-weight: lighter;
+  margin: 0;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+.hov-music-play-list {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  gap: 1em;
+  flex-wrap: nowrap;
+  overflow: hidden;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .hov-music-music-title {
@@ -82,21 +181,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 3em;
+  gap: 2em;
 }
 
 .hov-music-buttons button{
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   display: flex;
   align-items: center;
+  justify-content: center;
   justify-items: center;
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
 }
-
 .hov-music-buttons button img {
   opacity: 0.5;
   filter: invert(100%) sepia(0%);
