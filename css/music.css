@@ -1,6 +1,7 @@
 body {
   background-color: #131220;
 }
+
 .hov-music-contents-wrapper {
   display: flex;
   justify-content: space-around;
@@ -15,6 +16,33 @@ body {
   justify-content: flex-end;
   align-items: center;
   align-content: center;
+}
+
+.hov-music-cover-section{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 3em;
+}
+
+.hov-music-cover-background{
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-image: url('../rsc/music-img/lalalalovesong.png');
+  background-size: 100%;
+  background-position: center;
+  filter: blur(2em);
+}
+
+.hov-music-cover-image img{
+  position: absolute;
+  top: calc(50% - 15em);
+  left: calc(50% - 15em);
+  filter: none;
+  width: 30em;
+  height: auto;
+  overflow: hidden;
 }
 
 .hov-music-list-wrapper {
@@ -57,7 +85,7 @@ body {
 }
 
 .hov-music-element-move:hover {
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .hov-music-element-move img {
@@ -69,7 +97,6 @@ body {
 .hov-music-element-thumbnail {
   width: 2.5em;
   height: 2.5em;
-  background-color: #89888F;
 }
 
 .hov-music-element h3 {
@@ -81,6 +108,7 @@ body {
   white-space: nowrap;
   text-overflow: clip;
 }
+
 .hov-music-element h4 {
   font-size: 0.5em;
   font-weight: lighter;

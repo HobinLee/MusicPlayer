@@ -5,6 +5,8 @@ const
   playBTN = document.querySelector('.hov-music-play'),
   listBTN = document.querySelector('.hov-music-list'),
   listPanel = document.querySelector('.hov-music-list-wrapper'),
+  musicCoverBG = document.querySelector('.hov-music-cover-background'),
+  musicCover = document.querySelector('.hov-music-cover-image'),
   volumeBTN = document.querySelector('.hov-music-volume'),
   nextBTN = document.querySelector('.hov-music-next'),
   musicBar = document.querySelector('.hov-music-bar'),
@@ -46,22 +48,26 @@ const musicList = [
   {
     title: 'la la la lovesong',
     singer: '백예린',
-    src: './rsc/music/lalalalovesong.mp3'
+    src: './rsc/music/lalalalovesong.mp3',
+    img: './rsc/music-img/lalalalovesong.png'
   },
   {
     title: '공드리',
     singer: '혁오',
-    src: './rsc/music/공드리.mp3'
+    src: './rsc/music/공드리.mp3',
+    img: './rsc/music-img/공드리.jpg'
   },
   {
     title: 'She',
     singer: '카더가든',
-    src: './rsc/music/she.mp3'
+    src: './rsc/music/she.mp3',
+    img: './rsc/music-img/she.jpg'
   },
   {
     title: '난춘',
     singer: '새소년',
-    src: './rsc/music/난춘.mp3'
+    src: './rsc/music/난춘.mp3',
+    img: './rsc/music-img/난춘.jpg'
   }
 ]
 
@@ -92,7 +98,7 @@ function jumpMusic(e) {
 
 function createMusicElementBTN(music) {
   const musicElement = document.createElement('li');
-  const thumbnail = document.createElement('div');
+  const thumbnail = new Image();
   const info = document.createElement('div');
   const moveBTN = document.createElement('button');
   const musicTitle = document.createElement('h3');
@@ -103,6 +109,8 @@ function createMusicElementBTN(music) {
   musicElement.className = "hov-music-element";
   info.className = "hov-music-element-info";
   thumbnail.className = "hov-music-element-thumbnail";
+  thumbnail.src = music.img;
+  thumbnail.alt = music.title;
   moveBTN.className = "hov-music-element-move";
 
   moveIcon.src = "./rsc/uicons-regular-rounded/svg/fi-rr-interlining.svg";
@@ -303,6 +311,17 @@ function setTargetMusic() {
     currentAudio.pause();
   }
   
+  if(musicCover.firstElementChild) {
+    musicCover.removeChild(musicCover.firstElementChild);
+  }
+
+  const newCover = new Image();
+  newCover.src = musicList[musicIndex].img;
+  newCover.alt = musicList[musicIndex].title;
+
+  musicCoverBG.style.backgroundImage = `url('${musicList[musicIndex].img}')`;
+  musicCover.appendChild(newCover);
+
   currentAudio = audioList[musicIndex].firstElementChild;
   currentAudio.load();
   currentAudio.addEventListener('loadeddata', loadFinish);
