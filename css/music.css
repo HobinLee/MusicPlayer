@@ -37,10 +37,10 @@ body {
 
 .hov-music-cover-image img{
   position: absolute;
-  top: calc(50% - 15em);
-  left: calc(50% - 15em);
+  top: calc(50% - 13em);
+  left: calc(50% - 13em);
   filter: none;
-  width: 30em;
+  width: 26em;
   height: auto;
   overflow: hidden;
 }
@@ -74,6 +74,9 @@ body {
 }
 
 .hov-music-element-move {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 3em;
   height: 100%;
   cursor: pointer;

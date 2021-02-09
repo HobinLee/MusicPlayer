@@ -28,7 +28,8 @@ let musicIndex = 0,
   currentAudio = null,
   isPlaying = false,
   drag = false,
-  startMouse = null,
+  startMouseX = null,
+  startMouseY = null,
   startController = - controllerHalf+'px',
   audioList = null,
   musicBTNList = null,
@@ -100,7 +101,7 @@ function createMusicElementBTN(music) {
   const musicElement = document.createElement('li');
   const thumbnail = new Image();
   const info = document.createElement('div');
-  const moveBTN = document.createElement('button');
+  const moveBTN = document.createElement('div');
   const musicTitle = document.createElement('h3');
   const musicSinger = document.createElement('h4');
   const audio = document.createElement('audio');
@@ -134,7 +135,45 @@ function createMusicElementBTN(music) {
   //썸네일이나 제목부분 누르면 해당 음악 재생
   thumbnail.addEventListener('click', jumpMusic);
   info.addEventListener('click', jumpMusic);
+  moveBTN.addEventListener('mousedown', moveStart);
+  moveBTN.addEventListener('mousemove', onMove);
+  moveBTN.addEventListener('mouseup', moveEnd);
 }
+
+ let startPosX;
+ let startPosY;
+ let targetMusic;
+ let barLength;
+
+function moveStart(e) {
+  startMouseX = e.clientX;
+  startMouseY = e.clientY;
+  targetMusic = e.target.parentNode.parentNode;
+
+  if (targetMusic.nodeName = "LI") {
+    barLength = targetMusic.offsetWidth - e.target.offsetWidth;
+    targetMusic.style.position = 'absolute';
+    startPosX = targetMusic.style.left = startMouseX - barLength;
+    startPosY = targetMusic.style.top = startMouseY - e.target.offsetHeight;
+  }
+}
+
+function onMove(e) {
+  if (targetMusic) {
+    const finalX = startPosX + e.clientX - startMouseX;
+    const finalY = startPosY + e.clientY - startMouseY;
+    targetMusic.style.left = finalX;
+    targetMusic.style.top = finalY;
+    console.log(finalX, finalY);
+  }
+}
+
+function moveEnd(e) {
+  targetMusic.style.position = 'static';
+  startMouseX = null;
+  startMouseY = null;
+}
+
 
 function setCurrentMusicState() {
   if (prevMusic) {
@@ -163,26 +202,28 @@ function startDrag(e) {
   drag = true;
   currentAudio.pause();
   handle.style.backgroundColor = COLOR_ACTIVE;
-  startMouse = e.clientX;
+  startMouseX = e.clientX;
   const positionPX = controller.style.left;
   startController = parseInt(positionPX.slice(0, positionPX.length - 2));
 }
 
 function endDrag(e) {
-  if (startMouse) {
+  if (startMouseX) {
     const currMouse = e.clientX;
-    const distance = currMouse - startMouse;
+    const distance = currMouse - startMouseX;
 
-    currentAudio.currentTime = (startController + distance + controllerHalf) * currentAudio.duration / barWidth;
-    startMouse = null;
-
-    if (isPlaying) {
-      currentAudio.play();
-    } else {
-      handle.style.backgroundColor = COLOR_INACTIVE;
+    if (currentAudio.currentTime) {
+      currentAudio.currentTime = (startController + distance + controllerHalf) * currentAudio.duration / barWidth;
+      startMouseX = null;
+  
+      if (isPlaying) {
+        currentAudio.play();
+      } else {
+        handle.style.backgroundColor = COLOR_INACTIVE;
+      }
+  
+      drag = false;
     }
-
-    drag = false;
   }
 }
 
@@ -198,9 +239,9 @@ function handleMusicEnd() {
 }
 
 function handleMusicTime(e) {
-  if (startMouse) {
+  if (startMouseX) {
     const currMouse = e.clientX;
-    const distance = currMouse - startMouse;
+    const distance = currMouse - startMouseX;
     let position = startController + distance;
 
     if (position < -controllerHalf) {
