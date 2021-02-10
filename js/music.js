@@ -45,7 +45,7 @@ const DEFAULT_TIME = "0:00";
 const ICON_PLAY = './rsc/uicons-regular-rounded/svg/fi-rr-play.svg',
   ICON_PAUSE = './rsc/uicons-regular-rounded/svg/fi-rr-pause.svg';
 
-const musicList = [
+let musicList = [
   {
     title: 'la la la lovesong',
     singer: '백예린',
@@ -135,27 +135,112 @@ function createMusicElementBTN(music) {
   //썸네일이나 제목부분 누르면 해당 음악 재생
   thumbnail.addEventListener('click', jumpMusic);
   info.addEventListener('click', jumpMusic);
-  moveBTN.addEventListener('mousedown', moveStart);
-  moveBTN.addEventListener('mousemove', onMove);
-  moveBTN.addEventListener('mouseup', moveEnd);
+  moveBTN.addEventListener('mouseover', dragOn);
+  moveBTN.addEventListener('mouseout', dragOff);
+  playList.addEventListener('dragstart', dragStart);
+  playList.addEventListener('dragover', dragOver);
+  playList.addEventListener('drop', drop);
 }
 
- let startPosX;
- let startPosY;
- let targetMusic;
- let barLength;
+let picked = null,
+  pickedIndex = null,
+  afterli = null;
 
-function moveStart(e) {
-  startMouseX = e.clientX;
-  startMouseY = e.clientY;
-  targetMusic = e.target.parentNode.parentNode;
+function dragOn(e) {
+  e.preventDefault();
+  let element = e.target.parentNode.parentNode;
 
-  if (targetMusic.nodeName = "LI") {
-    barLength = targetMusic.offsetWidth - e.target.offsetWidth;
-    targetMusic.style.position = 'absolute';
-    startPosX = targetMusic.style.left = startMouseX - barLength;
-    startPosY = targetMusic.style.top = startMouseY - e.target.offsetHeight;
+  if(element.nodeName === 'UL')
+    return;
+
+  if (element.nodeName === 'LI') {
+    element.draggable = true;
   }
+}
+
+function dragOff(e) {
+  let element = e.target.parentNode.parentNode;
+
+  if(element.nodeName === 'UL')
+    return;
+
+  if (element.nodeName === 'LI') {
+    element.draggable = false;
+  }
+}
+
+function dragStart(e) {
+  let element = e.target;
+
+  if(element.nodeName === 'UL')
+    return;
+    
+  while(element.nodeName !== 'LI') {
+    element = element.parentNode;
+  }
+
+  const list = [... element.parentNode.children];
+  picked = element;
+  pickedIndex = list.indexOf(element);
+}
+
+function dragOver(e) {
+  e.preventDefault();
+}
+
+function drop(e) {
+  let element = e.target;
+
+  if(element.nodeName === 'UL')
+    return;
+
+  while(element.nodeName !== 'LI') {
+    element = element.parentNode;
+  }
+  
+  const list = [... element.parentNode.children];
+  const index = list.indexOf(element);
+
+  (index < pickedIndex) ? element.before(picked) : element.after(picked);
+
+  reSetMusicList(pickedIndex, index);
+}
+
+function reSetMusicList(before, after) {
+  let left = before;
+  let right = after;
+  let tmp = null;
+
+  // left에 더 작은 배열을 넣기
+
+  if (left > right) {
+    tmp = left;
+    left = right;
+    right = tmp;
+  }
+
+  const leftMusic = musicList[left];
+
+  /********/
+  if (musicIndex === before) {
+    musicIndex = after;
+  } else if (musicIndex === after) {
+    musicIndex --;
+  } else if ((musicIndex > left) && (musicIndex < right)){
+    musicIndex --;
+  }
+  console.log(musicIndex);
+  /********/
+  for (let i = left ; i < right ; i ++) {
+    musicList[i] = musicList[i + 1];
+  }
+
+  musicList[right] = leftMusic;
+
+  audioList = playList.querySelectorAll('.hov-music-element');
+  //before ~ after배열들은 전부 앞으로 민다
+  //after위치에 before를 넣는다
+  //musicList = ;
 }
 
 function onMove(e) {
