@@ -207,33 +207,22 @@ function drop(e) {
 }
 
 function reSetMusicList(before, after) {
-  let left = before;
-  let right = after;
-  let tmp = null;
-
-  // left에 더 작은 배열을 넣기
-
-  if (left > right) {
-    tmp = left;
-    left = right;
-    right = tmp;
-  }
-
-  const leftMusic = musicList[left];
-
-  /********/
+  const beforeMusic = musicList[before];
   if (musicIndex === before) {
     musicIndex = after;
-  } else if (musicIndex === after) {
-    musicIndex --;
-  } else if ((musicIndex > left) && (musicIndex < right)){
-    musicIndex --;
   }
-  console.log(musicIndex);
-  /********/
-  for (let i = left ; i < right ; i ++) {
-    musicList[i] = musicList[i + 1];
+  // musicIndex가 ++ 될 지, -- 될 지 작성 필요
+
+  if (before < after) {
+    for (let i = before ; i < after ; i ++) {
+      musicList[i] = musicList[i + 1];
+    }
+  } else if (before > after) {
+    for (let i = before ; i > after ; i --) {
+      musicList[i] = musicList[i - 1];
+    }
   }
+  music[after] = beforeMusic;
 
   musicList[right] = leftMusic;
 
