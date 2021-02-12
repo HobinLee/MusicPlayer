@@ -206,6 +206,16 @@ function drop(e) {
   reSetMusicList(pickedIndex, index);
 }
 
+function findCurrentMusic()
+{
+  for(let i = 0 ; i < musicList.length ; i++) {
+    if(currentAudio.id === musicList[i].title) {
+      musicIndex = i;
+      return;
+    }
+  }  
+}
+
 function reSetMusicList(before, after) {
   const beforeMusic = musicList[before];
   if (musicIndex === before) {
@@ -222,11 +232,12 @@ function reSetMusicList(before, after) {
       musicList[i] = musicList[i - 1];
     }
   }
-  music[after] = beforeMusic;
-
-  musicList[right] = leftMusic;
+  musicList[after] = beforeMusic;
 
   audioList = playList.querySelectorAll('.hov-music-element');
+  findCurrentMusic();
+
+  console.log(musicIndex, musicList);
   //before ~ after배열들은 전부 앞으로 민다
   //after위치에 before를 넣는다
   //musicList = ;
