@@ -3,20 +3,23 @@ const
   playList = document.querySelector('.hov-music-play-list'),
   prevBTN = document.querySelector('.hov-music-prev'),
   playBTN = document.querySelector('.hov-music-play'),
+  nextBTN = document.querySelector('.hov-music-next'),
   listBTN = document.querySelector('.hov-music-list'),
   listPanel = document.querySelector('.hov-music-list-wrapper'),
   musicCoverBG = document.querySelector('.hov-music-cover-background'),
   musicCover = document.querySelector('.hov-music-cover-image'),
   volumeBTN = document.querySelector('.hov-music-volume'),
-  nextBTN = document.querySelector('.hov-music-next'),
   musicBar = document.querySelector('.hov-music-bar'),
-  timeBar = document.querySelector('.hov-music-time-bar');
+  timeBar = document.querySelector('.hov-music-time-bar'),
   controller = document.querySelector('.hov-music-controller'),
   handle = controller.querySelector('.hov-music-controller-handle'),
   title = document.querySelector('.hov-music-music-title'),
   singer = document.querySelector('.hov-music-music-singer'),
   totalTime = document.querySelector('.hov-music-total-time'),
-  currTime = document.querySelector('.hov-music-current-time');
+  currTime = document.querySelector('.hov-music-current-time'),
+  volumenController = document.querySelector('.hov-music-volume-controller'),
+  volumeHandle = document.querySelector('.hov-music-volume-controller-handle'),
+  currentVolume = document.querySelector('.hov-music-current-volume');
 
 const barWidth = musicBar.offsetWidth,
   controllerHalf = controller.offsetWidth / 2;
@@ -144,7 +147,24 @@ function createMusicElementBTN(music) {
 
 let picked = null,
   pickedIndex = null,
-  afterli = null;
+  afterli = null,
+  volumeControl = false;
+
+function switchVolumenControl() {
+  volumeControl = (!volumeControl);
+  
+  prevBTN.style.display = volumeControl ? "none" : "flex";
+  playBTN.style.display = volumeControl ? "none" : "flex";
+  nextBTN.style.display = volumeControl ? "none" : "flex";
+  listBTN.style.display = volumeControl ? "none" : "flex";
+  volumenController.style.display = volumeControl ? "flex" : "none";
+  volumeBTN.querySelector('img').style.opacity = volumeControl ? 1 : 0.5;
+}
+
+function setVolume() {
+  currentVolume.innerText = volumeHandle.value;
+  currentAudio.volume = volumeHandle.value / 100;
+}
 
 function dragOn(e) {
   e.preventDefault();
@@ -449,6 +469,7 @@ function setTargetMusic() {
   musicCover.appendChild(newCover);
 
   currentAudio = audioList[musicIndex].firstElementChild;
+  setVolume();
   currentAudio.load();
   currentAudio.addEventListener('loadeddata', loadFinish);
   controller.style.left = -controllerHalf;
@@ -535,6 +556,11 @@ function init() {
   nextBTN.addEventListener('mouseout', offPress);
   prevBTN.addEventListener('mouseup', offPress);
   nextBTN.addEventListener('mouseup', offPress);
+
+  volumeBTN.addEventListener('click', switchVolumenControl);
+
+  volumeHandle.addEventListener('mousemove', setVolume);
+  volumeHandle.addEventListener('mousedown', setVolume);
 }
 
 init();

@@ -73,6 +73,58 @@ body {
   opacity: 0.7;
 }
 
+.hov-music-volume-controller {
+  display: none;
+  justify-content: flex-end;
+  justify-items: flex-end;
+  align-items: center;
+  height: auto;
+  width: 80%;
+  transition-duration: 0.5s;
+}
+
+.hov-music-volume-controller-handle {
+  -webkit-appearance: none;
+  
+  height: 0.5em;
+  
+  background-color: #89888F;
+  outline: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  overflow:hidden;
+
+  animation: stretch-out 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.hov-music-current-volume {
+  width: 4em;
+  font-weight: lighter;
+  font-size: 0.8em;
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+
+.hov-music-volume-controller-handle::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0px;
+  height: 0px;
+  background-color: white;
+  box-shadow: -20em 0 0 20em white;
+}
+
+
+@keyframes stretch-out{
+  from {
+    width: 0px;
+  }
+  to {
+    width: 80%;
+  }
+}
+
 .hov-music-element-move {
   display: flex;
   justify-content: center;
@@ -210,9 +262,9 @@ body {
 
 .hov-music-buttons { 
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 2em;
+  width: 20em;
+  justify-content: space-between;
+  align-items: flex-center;
 }
 
 .hov-music-buttons button{
@@ -226,6 +278,7 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
+  transition-duration: 0.5s;
 }
 .hov-music-buttons button img {
   opacity: 0.5;
