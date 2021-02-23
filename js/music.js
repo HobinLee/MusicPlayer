@@ -1,6 +1,7 @@
 const 
   screen = document.querySelector('body'),
   playList = document.querySelector('.hov-music-play-list'),
+  playerWrapper = document.querySelector('.hov-music-player-contents'),
   prevBTN = document.querySelector('.hov-music-prev'),
   playBTN = document.querySelector('.hov-music-play'),
   nextBTN = document.querySelector('.hov-music-next'),
@@ -41,7 +42,8 @@ let musicIndex = 0,
   jumpDirection = 0,
   prevMusic = null;
 
-const JUMP_TIME = 5;
+const JUMP_TIME = 5,
+  MOBILE_WIDTH = '820px';
 
 const DEFAULT_TIME = "0:00";
 
@@ -72,6 +74,70 @@ let musicList = [
     singer: '새소년',
     src: './rsc/music/난춘.mp3',
     img: './rsc/music-img/난춘.jpg'
+  },
+  {
+    title: '오늘',
+    singer: '오왠',
+    src: './rsc/music/오늘.mp3',
+    img: './rsc/music-img/today.jpg'
+  },{
+    title: 'la la la lovesong',
+    singer: '백예린',
+    src: './rsc/music/lalalalovesong.mp3',
+    img: './rsc/music-img/lalalalovesong.png'
+  },
+  {
+    title: '공드리',
+    singer: '혁오',
+    src: './rsc/music/공드리.mp3',
+    img: './rsc/music-img/공드리.jpg'
+  },
+  {
+    title: 'She',
+    singer: '카더가든',
+    src: './rsc/music/she.mp3',
+    img: './rsc/music-img/she.jpg'
+  },
+  {
+    title: '난춘',
+    singer: '새소년',
+    src: './rsc/music/난춘.mp3',
+    img: './rsc/music-img/난춘.jpg'
+  },
+  {
+    title: '오늘',
+    singer: '오왠',
+    src: './rsc/music/오늘.mp3',
+    img: './rsc/music-img/today.jpg'
+  },{
+    title: 'la la la lovesong',
+    singer: '백예린',
+    src: './rsc/music/lalalalovesong.mp3',
+    img: './rsc/music-img/lalalalovesong.png'
+  },
+  {
+    title: '공드리',
+    singer: '혁오',
+    src: './rsc/music/공드리.mp3',
+    img: './rsc/music-img/공드리.jpg'
+  },
+  {
+    title: 'She',
+    singer: '카더가든',
+    src: './rsc/music/she.mp3',
+    img: './rsc/music-img/she.jpg'
+  },
+  {
+    title: '난춘',
+    singer: '새소년',
+    src: './rsc/music/난춘.mp3',
+    img: './rsc/music-img/난춘.jpg'
+  },
+  {
+    title: '오늘',
+    singer: '오왠',
+    src: './rsc/music/오늘.mp3',
+    img: './rsc/music-img/today.jpg'
   }
 ]
 
@@ -530,12 +596,18 @@ function offPress() {
 }
 
 function controlListPanel() {
+  console.log();
+
   if (listPanel.style.maxWidth === "0px") {
     listPanel.style.maxWidth = "30em";
     listBTN.firstElementChild.style.opacity = 1;
+    listPanel.className = 'hov-music-list-wrapper-show';
+    playerWrapper.className = 'hov-music-player-contents-with-list';
   } else {
     listPanel.style.maxWidth = "0";
     listBTN.firstElementChild.style.opacity = 0.5;
+    listPanel.className = 'hov-music-list-wrapper';
+    playerWrapper.className = 'hov-music-player-contents';
   }
 }
 
