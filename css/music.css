@@ -59,6 +59,9 @@ body {
     align-content: center;
   }
 }
+#current-selected-music {
+  border-bottom: 1px solid white;
+}
 
 @media screen and (max-width: 820px) {
   .hov-music-contents-wrapper {

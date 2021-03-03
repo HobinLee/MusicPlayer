@@ -284,6 +284,8 @@ function drop(e) {
     element = element.parentNode;
   }
   
+  element.id = undefined;
+  
   const list = [... element.parentNode.children];
   const index = list.indexOf(element);
 
