@@ -50,96 +50,9 @@ const DEFAULT_TIME = "0:00";
 const ICON_PLAY = './rsc/uicons-regular-rounded/svg/fi-rr-play.svg',
   ICON_PAUSE = './rsc/uicons-regular-rounded/svg/fi-rr-pause.svg';
 
-let musicList = [
-  {
-    title: 'la la la lovesong',
-    singer: '백예린',
-    src: './rsc/music/lalalalovesong.mp3',
-    img: './rsc/music-img/lalalalovesong.png'
-  },
-  {
-    title: '공드리',
-    singer: '혁오',
-    src: './rsc/music/공드리.mp3',
-    img: './rsc/music-img/공드리.jpg'
-  },
-  {
-    title: 'She',
-    singer: '카더가든',
-    src: './rsc/music/she.mp3',
-    img: './rsc/music-img/she.jpg'
-  },
-  {
-    title: '난춘',
-    singer: '새소년',
-    src: './rsc/music/난춘.mp3',
-    img: './rsc/music-img/난춘.jpg'
-  },
-  {
-    title: '오늘',
-    singer: '오왠',
-    src: './rsc/music/오늘.mp3',
-    img: './rsc/music-img/today.jpg'
-  },{
-    title: 'la la la lovesong',
-    singer: '백예린',
-    src: './rsc/music/lalalalovesong.mp3',
-    img: './rsc/music-img/lalalalovesong.png'
-  },
-  {
-    title: '공드리',
-    singer: '혁오',
-    src: './rsc/music/공드리.mp3',
-    img: './rsc/music-img/공드리.jpg'
-  },
-  {
-    title: 'She',
-    singer: '카더가든',
-    src: './rsc/music/she.mp3',
-    img: './rsc/music-img/she.jpg'
-  },
-  {
-    title: '난춘',
-    singer: '새소년',
-    src: './rsc/music/난춘.mp3',
-    img: './rsc/music-img/난춘.jpg'
-  },
-  {
-    title: '오늘',
-    singer: '오왠',
-    src: './rsc/music/오늘.mp3',
-    img: './rsc/music-img/today.jpg'
-  },{
-    title: 'la la la lovesong',
-    singer: '백예린',
-    src: './rsc/music/lalalalovesong.mp3',
-    img: './rsc/music-img/lalalalovesong.png'
-  },
-  {
-    title: '공드리',
-    singer: '혁오',
-    src: './rsc/music/공드리.mp3',
-    img: './rsc/music-img/공드리.jpg'
-  },
-  {
-    title: 'She',
-    singer: '카더가든',
-    src: './rsc/music/she.mp3',
-    img: './rsc/music-img/she.jpg'
-  },
-  {
-    title: '난춘',
-    singer: '새소년',
-    src: './rsc/music/난춘.mp3',
-    img: './rsc/music-img/난춘.jpg'
-  },
-  {
-    title: '오늘',
-    singer: '오왠',
-    src: './rsc/music/오늘.mp3',
-    img: './rsc/music-img/today.jpg'
-  }
-]
+const MUSIC_SEVER = 'http://localhost:3000/music';
+
+let musicList = fetch(MUSIC_SEVER).then(res => res.json()).then(data=>console.log(data)).catch(err => console.error(err));
 
 function findIndex(audio){
   for(let i = 0 ; i < audioList.length ; i++) {
