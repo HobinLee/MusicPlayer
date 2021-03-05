@@ -1,0 +1,58 @@
+body {
+    background-color: #836948;
+    background-image: url('../rsc/glasses.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 6rem;
+}
+
+h3 {
+    font-size: 6rem;
+    margin: 1rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+h4 {
+    font-size: 3rem;
+    margin: 1rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+.contents {
+    display: block;
+    width: auto;
+    margin: auto;
+}
+
+.js-clock {
+    width: auto;
+}
+
+.js-form.hide{
+    width: auto;
+    visibility: hidden;
+}
+
+.js-text.hide{
+    width: auto;
+    visibility: hidden;
+}
+
+.js-toDo.hide{
+    width: auto;
+    visibility: hidden;
+}
+
+.js-toDo input {
+    display: block;
+    margin: auto;
+    width: auto;
+}
+
+.js-form input {
+    display: block;
+    margin: auto;
+    width: auto;
+}
