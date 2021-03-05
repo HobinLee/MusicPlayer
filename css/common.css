@@ -1,6 +1,0 @@
-body {
-  margin: 1em;
-  height: calc(100vh - 2em);
-  display: grid;
-  grid-template-rows: 1fr 4em;
-}
