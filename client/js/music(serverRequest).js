@@ -40,7 +40,8 @@ let musicIndex = 0,
   mouseDown = null,
   jumpTime = null,
   jumpDirection = 0,
-  prevMusic = null;
+  prevMusic = null,
+  musicList = null;
 
 const JUMP_TIME = 5,
   MOBILE_WIDTH = '820px';
@@ -49,10 +50,6 @@ const DEFAULT_TIME = "0:00";
 
 const ICON_PLAY = './rsc/uicons-regular-rounded/svg/fi-rr-play.svg',
   ICON_PAUSE = './rsc/uicons-regular-rounded/svg/fi-rr-pause.svg';
-
-const MUSIC_SEVER = 'http://localhost:3000/music';
-
-let musicList = fetch(MUSIC_SEVER).then(res => res.json()).then(data=>console.log(data)).catch(err => console.error(err));
 
 function findIndex(audio){
   for(let i = 0 ; i < audioList.length ; i++) {
@@ -411,10 +408,15 @@ function jumpPlayTime() {
 }
 
 function setMusicList() {
-  musicList.forEach(music => createMusicElementBTN(music));
-  audioList = playList.querySelectorAll('.hov-music-element');
-  musicIndex = 0;
-  setTargetMusic();
+  fetch('http://localhost:3000/music')
+  .then(res=>res.json())
+  .then(data => {
+    musicList = data;
+    musicList.forEach(music => createMusicElementBTN(music));
+    audioList = playList.querySelectorAll('.hov-music-element');
+    musicIndex = 0;
+    setTargetMusic();
+  });
 }
 
 function loadFinish() {
