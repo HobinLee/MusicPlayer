@@ -1,0 +1,94 @@
+body {
+    background-color: white;
+}
+.hov-main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hov-main-name {
+    -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin: left top;
+    -moz-transform: rotate(90deg);
+    -moz-transform-origin: left top;
+    -o-transform: rotate(90deg);
+    -o-transform-origin: left top;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: left top;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bolder;
+    align-self: flex-start;
+    position: absolute;
+    left: 0;
+    top: 105px;
+}
+
+.hov-main-last-update {
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: right top;
+    -moz-transform: rotate(90deg);
+    -moz-transform-origin: right top;
+    -o-transform: rotate(90deg);
+    -o-transform-origin: right top;
+    -ms-transform: rotate(90deg);
+    -ms-transform-origin: right top;
+    transform: rotate(-90deg);
+    transform-origin: right top;
+    text-align: left;
+    font-size: 15px;
+    font-weight: lighter;
+    align-self: flex-start;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.hov-main-wrapper {
+    width: 70vw;
+    max-width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hov-main-wrapper > h1{
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.hov-main-profile-wrapper{
+    width: 80%;
+    height: auto;
+    padding: 1vw;
+    border: solid black 20px;
+}
+
+.hov-main-profile-wrapper > img {
+    width: 100%;
+    height: auto;
+}
+
+.hov-menu-button img {
+    filter: brightness(0%);
+}
+
+@media screen and (max-width: 600px) {
+    .hov-main-wrapper > h1{
+        font-size: 7vw;
+    }
+    .hov-main-profile-wrapper{
+        border: solid black 3vw;
+    }
+}

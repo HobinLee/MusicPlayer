@@ -1,0 +1,74 @@
+body {
+    background-color: white;
+}
+.hov-profile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hov-profile-mission {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hov-profile-mission > img {
+    width: 40px;
+    height: 40px;
+}
+
+.hov-profile-mission > h2 {
+    text-align: center;
+    font-weight: lighter;
+}
+
+.hov-profile-resume-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hov-profile-resume {
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.hov-profile-resume-wrapper-img > img {
+    width: 30 vw;
+    max-width: 300px;
+    height: 100%;
+}
+
+.hov-profile-resume-wrapper-img > img {
+    width: 100%;
+    height: auto;
+}
+.hov-menu-button img {
+    filter: brightness(0%);
+}
+
+.hov-profile-contact ul {
+    list-style: none;
+    width: 50vw;
+    margin: 0;
+    padding: 10px;
+    border: #eee 1px solid;
+}
+.hov-profile-contact li {
+    list-style: none;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #222;
+}
+
+.hov-profile-contact img {
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+    margin: 5px;
+}
