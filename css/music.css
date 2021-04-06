@@ -1,5 +1,10 @@
 body {
-  background-color: #131220;
+  background-color: white;
+}
+
+.hov-music-contents-wrapper {
+  height: calc(100% - 40px);
+  padding-bottom: 40px;
 }
 
 @media screen and (min-width: 821px) {
@@ -25,10 +30,10 @@ body {
   }
   .hov-music-cover-image img{
     position: absolute;
-    top: calc(50% - 13em);
-    left: calc(50% - 13em);
+    top: calc(50% - 10em);
+    left: calc(50% - 10em);
     filter: none;
-    width: 26em;
+    width: 20em;
     height: auto;
     overflow: hidden;
   }
@@ -60,7 +65,7 @@ body {
   }
 }
 #current-selected-music {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid black;
 }
 
 @media screen and (max-width: 820px) {
@@ -87,10 +92,10 @@ body {
   }
   .hov-music-cover-image img{
     position: absolute;
-    top: calc(50% - 10em);
-    left: calc(50% - 10em);
+    top: calc(50% - 8em);
+    left: calc(50% - 8em);
     filter: none;
-    width: 20em;
+    width: 16em;
     height: auto;
     overflow: hidden;
   }
@@ -151,7 +156,7 @@ body {
   align-content: flex-start;
   justify-content: space-between;
   flex: auto;
-  color: white;
+  color: black;
   opacity: 0.7;
 }
 
@@ -185,7 +190,7 @@ body {
   font-weight: lighter;
   font-size: 0.8em;
   text-align: center;
-  color: white;
+  color: black;
   margin: 0;
 }
 
@@ -193,8 +198,8 @@ body {
   -webkit-appearance: none;
   width: 0px;
   height: 0px;
-  background-color: white;
-  box-shadow: -20em 0 0 20em white;
+  background-color: black;
+  box-shadow: -20em 0 0 20em black;
 }
 
 
@@ -228,7 +233,6 @@ body {
 .hov-music-element-move img {
   width: 1.5em;
   height: 1.5em;
-  filter: invert(100%) sepia(0%);
 }
 
 .hov-music-element-thumbnail {
@@ -242,7 +246,7 @@ body {
   margin: 0;
 
   overflow: hidden;
-  white-space: nowrap;
+  black-space: nowrap;
   text-overflow: clip;
 }
 
@@ -252,7 +256,7 @@ body {
   margin: 0;
 
   overflow: hidden;
-  white-space: nowrap;
+  black-space: nowrap;
   text-overflow: clip;
 }
 
@@ -274,7 +278,7 @@ body {
 }
 
 .hov-music-music-title {
-  color: white;
+  color: black;
   font-size: 2em;
   font-weight: lighter;
   text-align: center;
@@ -283,7 +287,7 @@ body {
 }
 
 .hov-music-music-singer {
-  color: white;
+  color: black;
   font-size: 0.8em;
   font-weight: lighter;
   text-align: center;
@@ -308,7 +312,7 @@ body {
 }
 
 .hov-music-time-bar {
-  background-color: white;
+  background-color: black;
   width: 0%;
   height: 100%;
   border-radius: 0.06em;
@@ -366,7 +370,6 @@ body {
   opacity: 0.5;
   width: 2em;
   height: 2em;
-  filter: invert(100%) sepia(0%);
   transition-duration: 0.3s;
 }
 
@@ -376,7 +379,7 @@ body {
 }
 
 .hov-music-controller-circle {
-  background-color: white;
+  background-color: black;
   width: 0.7em;
   height: 0.7em;
   border-radius: 0.7em;
@@ -394,7 +397,7 @@ body {
   font-size: 0.8em;
   top: 0;
   left: 0;
-  color: white;
+  color: black;
   opacity: 0.8;
   font-weight: bold;
 }

@@ -2,8 +2,8 @@ const menuWrapper = document.querySelector('.hov-menu-wrapper');
 const menus = [
   {
     title: "index",
-    srcOn: "./rsc/uicons-bold-rounded/svg/fi-br-home.svg",
-    srcOff: "./rsc/uicons-regular-rounded/svg/fi-rr-home.svg"
+    srcOn: "./rsc/menu_icon/home_selected.svg",
+    srcOff: "./rsc/menu_icon/home.svg"
   },
   {
     title: "profile",
@@ -12,7 +12,7 @@ const menus = [
   },
   {
     title: "music",
-    srcOn:"./rsc/uicons-bold-rounded/svg/fi-br-music.svg",
+    srcOn:"./rsc/menu_icon/music_selected.svg",
     srcOff: "./rsc/uicons-regular-rounded/svg/fi-rr-music.svg"
   },/*
   {

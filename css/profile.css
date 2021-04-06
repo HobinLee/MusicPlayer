@@ -1,3 +1,4 @@
+
 body {
     background-color: white;
 }
@@ -13,6 +14,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 30px;
 }
 
 .hov-profile-mission > img {
@@ -32,12 +34,14 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .hov-profile-resume {
     height: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .hov-profile-resume-wrapper-img > img {
     width: 30 vw;
     max-width: 300px;
@@ -47,9 +51,6 @@ body {
 .hov-profile-resume-wrapper-img > img {
     width: 100%;
     height: auto;
-}
-.hov-menu-button img {
-    filter: brightness(0%);
 }
 
 .hov-profile-contact ul {
@@ -71,4 +72,17 @@ body {
     height: auto;
     vertical-align: middle;
     margin: 5px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .hov-profile-mission > img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .hov-profile-mission > h2 {
+        font-size: 18px;
+        white-space: pre-wrap;
+    }
 }

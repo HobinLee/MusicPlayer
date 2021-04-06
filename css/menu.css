@@ -1,5 +1,8 @@
-
 .hov-menu-wrapper {
+  width: 100%;
+  bottom: 0;
+  left: calc(50vw - 50%);
+  position: fixed;
   display: flex;
   gap: 0.5em;
   flex-wrap: wrap;
@@ -20,7 +23,7 @@
   height: 2.5em;
   cursor: pointer;
   transition-duration: 0.3s;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .hov-menu-button:hover {
@@ -34,7 +37,7 @@
 .hov-menu-button img {
   width: 100%;
   height: 100%;
-  filter: invert(100%) sepia(0%);
+  filter: invert(12%) sepia(84%) saturate(5914%) hue-rotate(276deg) brightness(70%) contrast(115%);
 }
 
 .hov-menu-button:active {
