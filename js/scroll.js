@@ -1,34 +1,42 @@
 export class ScrollController {
   constructor() {
-    this.MAX_PAGE = 5;
+    this.MAX_PAGE = 2;
     this._currPage = 1;
     this._scrollPause = true;
-    document.addEventListener('scroll', (e) => this._scrollPause && this.checkScroll(e));
+    this._wrapper = document.querySelector('body');
+
+    this.initScroll();
   }
   init() {
 
   }
   checkScroll(e) {
-    e.preventDefault;
+    if (this._scrollPause === false) {
+      return;
+    }
+
     const direction = e.wheelDelta;
-    this._scrollPause = false;
+  
     if (direction < 0) {
+      if (this._currPage === this.MAX_PAGE) return;
       this._currPage ++;
     } else {
+      if (this._currPage === 1) return;
       this._currPage --;
     }
+    
+    this._scrollPause = false;
 
-    if (this._currPage < 1) {
-      this._currPage = 1;
-    } else if (this._currPage > this.MAX_PAGE) {
-      this._currPage = this.MAX_PAGE;
-    }
-    this._currPage ++;
+    this._wrapper.className = 'page' + this._currPage;
 
-    const wrapper = document.querySelector('.hov-content-wrapper');
-    const style = -(this._currPage - 1) * 100 + 'vh;';
-    console.log(style);
-    wrapper.style.top = style;
+    document.removeEventListener('mousewheel', (e) => this.checkScroll(e));
+    this._wrapper.addEventListener('transitionend', () => this.initScroll());
+  }
+
+  initScroll() {
+    this._scrollPause = true;
+    document.addEventListener('mousewheel', (e) => this.checkScroll(e));
+    this._wrapper.removeEventListener('transitionend', (e) => this.startScroll());
   }
 }
 

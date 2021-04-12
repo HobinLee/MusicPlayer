@@ -4,6 +4,7 @@
 body {
     background-color: white;
     position: relative;
+    overflow: hidden;
 }
 .hov-page {
     width: 100%;
@@ -13,8 +14,14 @@ body {
 .hov-content-wrapper {
     width: 100%;
     height: auto;
-    transition-duration: 2s;
+    transition-duration: 1s;
     position: absolute;
+}
+.page1 > .hov-content-wrapper {
+    top: 0px;
+}
+.page2 > .hov-content-wrapper {
+    top: -100vh;
 }
 .hov-main {
     width: 100%;
