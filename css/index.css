@@ -3,6 +3,7 @@
 }
 body {
     background-color: white;
+    position: relative;
 }
 .hov-page {
     width: 100%;
@@ -12,6 +13,8 @@ body {
 .hov-content-wrapper {
     width: 100%;
     height: auto;
+    transition-duration: 2s;
+    position: absolute;
 }
 .hov-main {
     width: 100%;
