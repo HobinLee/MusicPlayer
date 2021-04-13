@@ -1,6 +1,6 @@
 export class ScrollController {
   constructor() {
-    this.MAX_PAGE = 2;
+    this.MAX_PAGE = 3;
     this._currPage = 1;
     this._scrollPause = true;
     this._wrapper = document.querySelector('body');
@@ -14,7 +14,6 @@ export class ScrollController {
     if (this._scrollPause === false) {
       return;
     }
-
     const direction = e.wheelDelta;
   
     if (direction < 0) {
@@ -24,6 +23,8 @@ export class ScrollController {
       if (this._currPage === 1) return;
       this._currPage --;
     }
+    
+    console.log('scroll');
     
     this._scrollPause = false;
 

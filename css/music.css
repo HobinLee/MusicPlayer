@@ -3,8 +3,8 @@ body {
 }
 
 .hov-music-contents-wrapper {
-  height: calc(100% - 40px);
-  padding-bottom: 40px;
+  height: calc(100vh - 80px);
+  padding: 40px 0px;
 }
 
 @media screen and (min-width: 821px) {
