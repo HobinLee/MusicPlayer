@@ -14,19 +14,19 @@ body {
     justify-items: center;
     align-content: stretch;
   }
-  .hov-music-list-wrapper {
-    width: 30em;
+  .hov-music-list-wrapper-hide {
     max-width: 0;
+    width: 30em;
     height: 80vh;
     overflow: hidden;
-    transition: max-width 0.3s ease-out;
+    transition: max-width 0.5s ease-out;
   }
   .hov-music-list-wrapper-show {
     width: 30em;
     max-width: 100%;
     height: 80vh;
     overflow-y: scroll;
-    transition: max-width 0.3s ease-out;
+    transition: max-width 0.5s ease-out;
   }
   .hov-music-cover-image img{
     position: absolute;
@@ -76,7 +76,7 @@ body {
     justify-items: center;
     align-items: center;
   }
-  .hov-music-list-wrapper {
+  .hov-music-list-wrapper-hide {
     display: none;
     width: 100%;
     height: 80vh;
@@ -246,7 +246,7 @@ body {
   margin: 0;
 
   overflow: hidden;
-  black-space: nowrap;
+  white-space: nowrap;
   text-overflow: clip;
 }
 
@@ -261,7 +261,6 @@ body {
 }
 
 .hov-music-play-list {
-  width: 0;
   display: flex;
   height: 100%;
   flex-direction: column;

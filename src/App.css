@@ -27,15 +27,15 @@ body {
   position: absolute;
 }
 
-.page1 > .hov-content-wrapper {
+.page1 {
   top: 0px;
 }
 
-.page2 > .hov-content-wrapper {
+.page2 {
   top: -100vh;
 }
 
-.page3 > .hov-content-wrapper {
+.page3 {
   top: -200vh;
 }
 

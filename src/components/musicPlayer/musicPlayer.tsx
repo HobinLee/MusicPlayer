@@ -10,7 +10,15 @@ import NextIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-forward.svg';
 import PlayIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-play.svg';
 import PauseIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-pause.svg';
 
-export class MusicPlayer extends Component {
+type MusicPlayerProps = {
+    listVisible: boolean;
+    listVisibleSwitch: () => void;
+};
+
+export class MusicPlayer extends Component<MusicPlayerProps> {
+  constructor(props: MusicPlayerProps) {
+    super(props);
+  }
   handlePlay(): void{
     console.log('click Play');
   }
@@ -27,8 +35,8 @@ export class MusicPlayer extends Component {
     // const listPanel = document.querySelector('.hov-music-play-list');
     // if (listPanel?.style.maxWidth === "0px") {
     //   listPanel.style.maxWidth = "30em";
-    //   listPanel.className = 'hov-music-list-wrapper-show';
-    //   playerWrapper.className = 'hov-music-player-contents-with-list';
+    //   listPanel.className = 'hov-music-list-wrapper-shov-music-player-contentshow';
+    //   playerWrapper.className = ;
     // } else {
     //   listPanel.style.maxWidth = "0px";
     //   listPanel.className = 'hov-music-list-wrapper';
@@ -42,9 +50,9 @@ export class MusicPlayer extends Component {
   render() {
     return (
       <div className = 'hov-music-player-wrapper'>
-        <MusicCover/>
-        <MusicInfo/>
-        <div className ='hov-music-player-contents'>
+        <div className = {this.props.listVisible ? 'hov-music-player-contents-with-list' : 'hov-music-player-contents'}>
+          <MusicCover/>
+          <MusicInfo/>
           <div className = 'hov-music-control-section'>
               <div className = 'hov-music-bar'>
               <div className = 'hov-music-time-bar'>
@@ -65,7 +73,7 @@ export class MusicPlayer extends Component {
           <div className = 'hov-music-volume-controller'>
             <h3 className = 'hov-music-current-volume'>50</h3>
           </div>
-          <button className = 'hov-music-list' onClick = {this.handleList}>
+          <button className = 'hov-music-list' onClick = {this.props.listVisibleSwitch}>
             <img src = {ListIcon} alt = 'menu'/>
           </button>
           <button className = 'hov-music-prev'>
