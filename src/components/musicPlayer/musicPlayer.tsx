@@ -1,4 +1,4 @@
-import react, { Component } from 'react';
+import { Component } from 'react';
 import MusicTimer from './musicTimer';
 import MusicCover from './musicCover';
 import MusicInfo from './musicInfo';
@@ -11,7 +11,6 @@ import PlayIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-play.svg';
 import PauseIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-pause.svg';
 
 export class MusicPlayer extends Component {
-
   handlePlay(): void{
     console.log('click Play');
   }
@@ -25,7 +24,16 @@ export class MusicPlayer extends Component {
   }
 
   handleList(): void{
-    console.log('show and hide list');
+    // const listPanel = document.querySelector('.hov-music-play-list');
+    // if (listPanel?.style.maxWidth === "0px") {
+    //   listPanel.style.maxWidth = "30em";
+    //   listPanel.className = 'hov-music-list-wrapper-show';
+    //   playerWrapper.className = 'hov-music-player-contents-with-list';
+    // } else {
+    //   listPanel.style.maxWidth = "0px";
+    //   listPanel.className = 'hov-music-list-wrapper';
+    //   playerWrapper.className = 'hov-music-player-contents';
+    // }
   }
 
   handleVolume(): void{

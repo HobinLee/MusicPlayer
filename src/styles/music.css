@@ -256,11 +256,12 @@ body {
   margin: 0;
 
   overflow: hidden;
-  black-space: nowrap;
+  white-space: nowrap;
   text-overflow: clip;
 }
 
 .hov-music-play-list {
+  width: 0;
   display: flex;
   height: 100%;
   flex-direction: column;
