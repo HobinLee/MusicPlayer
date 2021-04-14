@@ -4,11 +4,13 @@ export class Music {
   singer: string = '';
   src: string = '';
   img: string = '';
+  audio?: HTMLAudioElement;
 
   constructor (musicObject: any) {
     this.title = musicObject.title;
     this.singer = musicObject.singer;
     this.src = musicObject.src;
     this.img = musicObject.img;
+    this.audio = new Audio(this.src);
   }
 }

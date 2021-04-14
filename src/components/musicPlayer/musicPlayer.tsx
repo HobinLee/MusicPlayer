@@ -20,12 +20,20 @@ type MusicPlayerProps = {
 };
 
 export class MusicPlayer extends Component<MusicPlayerProps> {
+  state = {
+    play: false,
+  }
   constructor(props: MusicPlayerProps) {
     super(props);
+    this.setState({
+      audio: props.currMusic,
+      play: false,
+    });
   }
 
   handlePlay(): void{
-    console.log('click Play');
+    this.setState({ play: !this.state.play },
+      () => {this.state.play ? this.props.currMusic.audio?.play() : this.props.currMusic.audio?.pause()})
   }
 
   handleVolume(): void{
@@ -65,7 +73,7 @@ export class MusicPlayer extends Component<MusicPlayerProps> {
             <img src = {PrevIcon} alt = 'prev' onClick = {() => this.props.changeMusic(true)}/>
           </button>
           <button className = 'hov-music-play'>
-            <img src = {PlayIcon} alt = 'play' onClick = {this.handlePlay}/>
+            <img src = {this.state.play ? PauseIcon : PlayIcon} alt = 'play' onClick = {() => this.handlePlay()}/>
           </button>
           <button className = 'hov-music-next'>
             <img src = {NextIcon} alt = 'next' onClick = {() => this.props.changeMusic(false)}/>
