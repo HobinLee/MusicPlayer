@@ -20,12 +20,19 @@ type MusicPlayerProps = {
 };
 
 export class MusicPlayer extends Component<MusicPlayerProps> {
+  state = {
+    currMusic: null,
+  }
   constructor(props: MusicPlayerProps) {
     super(props);
+    if(this.props.currMusic) {
+      const music = new Audio(this.props.currMusic.src);
+      music.load();
+      this.setState({currMusic: music})
+    }
   }
 
   handlePlay(): void{
-    console.log('click Play');
   }
 
   handleVolume(): void{
@@ -39,17 +46,15 @@ export class MusicPlayer extends Component<MusicPlayerProps> {
           <MusicCover currMusic={this.props.currMusic}/>
           <MusicInfo currMusic={this.props.currMusic}/>
           <div className = 'hov-music-control-section'>
+            <audio src = {this.props.currMusic?.src} onCanPlay={() => console.log('a')}/>
               <div className = 'hov-music-bar'>
               <div className = 'hov-music-time-bar'>
                 <div className = 'hov-music-controller'>
-                  <div className = 'hov-music-controller-handle'>
-                  </div>
+                  <div className = 'hov-music-controller-handle'/>
                 </div>
               </div>
-              <div className = 'hov-music-rest-bar'>
-              </div>
+              <div className = 'hov-music-rest-bar'/>
             </div>
-            
             <MusicTimer/>
           </div>
         </div>
@@ -65,7 +70,7 @@ export class MusicPlayer extends Component<MusicPlayerProps> {
             <img src = {PrevIcon} alt = 'prev' onClick = {() => this.props.changeMusic(true)}/>
           </button>
           <button className = 'hov-music-play'>
-            <img src = {PlayIcon} alt = 'play' onClick = {this.handlePlay}/>
+            <img src = {PlayIcon} alt = 'play' onClick = {() => this.handlePlay()}/>
           </button>
           <button className = 'hov-music-next'>
             <img src = {NextIcon} alt = 'next' onClick = {() => this.props.changeMusic(false)}/>
