@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Menu from './components/menu';
 import MainPage from './pages/main';
 import ProfilePage from './pages/profile';
@@ -26,8 +25,6 @@ export class App extends Component{
       if (page === 1) return;
       page --;
     }
-
-    console.log(page);
     
     this.setState({
       isScrolling: true,

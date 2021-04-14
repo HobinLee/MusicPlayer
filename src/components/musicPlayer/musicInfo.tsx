@@ -1,11 +1,16 @@
 import { Component } from 'react';
+import { Music } from './music.entity';
+import { MusicProps } from './musicCover';
 
-export class MusicTitle extends Component {
+export class MusicTitle extends Component<MusicProps> {
+  constructor(props: MusicProps) {
+    super(props);
+  }
   render() {
     return (
       <div className = 'hov-music-info-section'>
-        <div className = 'hov-music-music-title'>LALALA Lovesong</div>
-        <div className = 'hov-music-music-singer'>백예린</div>
+        <div className = 'hov-music-music-title'>{this.props.currMusic?.title}</div>
+        <div className = 'hov-music-music-singer'>{this.props.currMusic?.singer}</div>
       </div>
     );
   }

@@ -132,11 +132,10 @@ body {
 .hov-music-cover-background{
   width: 100%;
   height: 100%;
-  background-color: black;
-  background-image: url('../rsc/music-img/lalalalovesong.png');
+  filter: blur(2em);
+  background-color: white;
   background-size: 100%;
   background-position: center;
-  filter: blur(2em);
 }
 
 .hov-music-element {
