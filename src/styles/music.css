@@ -311,6 +311,7 @@ body {
 }
 
 .hov-music-time-bar {
+  position: relative;
   background-color: black;
   width: 0%;
   height: 100%;
@@ -318,16 +319,15 @@ body {
 }
 
 .hov-music-controller {
-  position: relative;
-  top: -1em;
-  left: -1em;
-
+  position: absolute;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 2em;
   height: 2em;
-
+  right: -1em;
+  top: -1em;
   cursor: pointer;
 }
 
@@ -378,6 +378,7 @@ body {
 }
 
 .hov-music-controller-circle {
+  position: absolute;
   background-color: black;
   width: 0.7em;
   height: 0.7em;
