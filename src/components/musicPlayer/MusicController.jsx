@@ -4,7 +4,7 @@ const MusicController = ({ currentTime, finishTime, currMusic }) => {
   useEffect(() => {},[currentTime])
   
   const handleMusicTime = (e) => {
-    currMusic.audio.currentTime = e * currMusic.audio.duration / 100;
+    currMusic.audio().currentTime = e * currMusic.audio().duration / 100;
   }
 
   const timeToString = (time) => {
@@ -22,7 +22,7 @@ const MusicController = ({ currentTime, finishTime, currMusic }) => {
         <input className = "hov-music-bar"
               type = "range"
               min = "0" max = "100"
-              value = {currMusic.audio.duration ? (currMusic.audio.currentTime / currMusic.audio.duration * 100) : 0}
+              value = {currMusic.audio().duration ? (currMusic.audio().currentTime / currMusic.audio().duration * 100) : 0}
               onChange = {(e) => handleMusicTime(e.target.value)}
         />
       </div>

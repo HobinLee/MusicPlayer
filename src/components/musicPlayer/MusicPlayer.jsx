@@ -28,60 +28,60 @@ const MusicPlayer = ({ currMusic, listVisible, listVisibleSwitch, changeMusic}) 
     if (prevAudio && play) {
       prevAudio.pause();
       prevAudio.currentTime = 0;
-      currMusic.audio.play();
+      currMusic.audio().play();
     }
 
-    if(currMusic.audio.duration) {
+    if(currMusic.audio().duration) {
       initAudio();
     } else {
-      currMusic.audio.onloadedmetadata = initAudio;
+      currMusic.audio().onloadedmetadata = initAudio;
     }
   },[currMusic]);
 
   useEffect(() => {
-    currMusic.audio.ontimeupdate = handleMusicProgress;
+    currMusic.audio().ontimeupdate = handleMusicProgress;
   },[jumpBTNPressTime])
 
   function handleMusicProgress () {
     if (!jumpBTNPressTime || jumpThreshold()) {
-      setCurrentTime(currMusic.audio.currentTime);
+      setCurrentTime(currMusic.audio().currentTime);
     } else {
       jumpPlayTime();
     }
   }
 
   function initAudio() {
-    currMusic.audio.currentTime = 0;
-    currMusic.audio.volume = volume / 100;
-    currMusic.audio.ontimeupdate = handleMusicProgress;
-    currMusic.audio.onended = handleEndMusic;
+    currMusic.audio().currentTime = 0;
+    currMusic.audio().volume = volume / 100;
+    currMusic.audio().ontimeupdate = handleMusicProgress;
+    currMusic.audio().onended = handleEndMusic;
 
     setCurrentTime(0);
-    setPrevAudio(currMusic.audio);
-    setFinishTime(currMusic.audio.duration);
+    setPrevAudio(currMusic.audio());
+    setFinishTime(currMusic.audio().duration);
   }
 
   function jumpPlayTime() {
     const now = new Date().getTime();
-    let targetTime = currMusic.audio.currentTime + JUMP_TIME * jumpDirection;
+    let targetTime = currMusic.audio().currentTime + JUMP_TIME * jumpDirection;
 
     setJumpTime(true);
   
-    if (targetTime > currMusic.audio.duration) {
-      targetTime = currMusic.audio.duration;
+    if (targetTime > currMusic.audio().duration) {
+      targetTime = currMusic.audio().duration;
       releaseJumpBTN();
     } else {
       setBTNPressTime(now);
     }
     
-    currMusic.audio.currentTime = targetTime;
+    currMusic.audio().currentTime = targetTime;
   }
   
   const handleEndMusic = () => { play && changeMusic(true) };
 
   const handlePlay = () => {
     //음악이 재생중이면 멈추고 멈춰있다면 재생하기
-    play ? currMusic.audio?.pause() : currMusic.audio?.play();
+    play ? currMusic.audio()?.pause() : currMusic.audio()?.play();
 
     setPlay(!play);
   }
@@ -91,7 +91,7 @@ const MusicPlayer = ({ currMusic, listVisible, listVisibleSwitch, changeMusic}) 
   
   const handleVolume = (volume) => {
     setVolume(volume);
-    currMusic.audio.volume = volume / 100;
+    currMusic.audio().volume = volume / 100;
   }
 
   function jumpThreshold() {

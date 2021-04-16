@@ -269,7 +269,7 @@ body {
   align-items: center;
   gap: 1em;
   flex-wrap: nowrap;
-  overflow: hidden;
+  overflow:scroll;
 
   list-style: none;
   margin: 0;

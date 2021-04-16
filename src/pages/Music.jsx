@@ -64,7 +64,7 @@ const MusicPage = () => {
 
     // if(element.nodeName === 'UL')
     //   return;
-      
+       
     // while(element.nodeName !== 'LI') {
     //   element = element.parentNode;
     // }
@@ -137,12 +137,14 @@ const MusicPage = () => {
 
   return (
     <div className = 'hov-music-contents-wrapper'>
-      <MusicPlayer currMusic = {musicList[currMusic]} listVisible = {listVisible} listVisibleSwitch = {() => switchListVisible()} changeMusic={(next) => changeMusic(next)}/>
+      {
+        <MusicPlayer currMusic = {musicList[currMusic]} listVisible = {listVisible} listVisibleSwitch = {() => switchListVisible()} changeMusic={(next) => changeMusic(next)}/>
+      }
       <div className = {listVisible ? 'hov-music-list-wrapper-show' : 'hov-music-list-wrapper-hide'}>
         <ul className = 'hov-music-play-list'
             onDragStart = { (e) => dragStart(e) }
             onDragOver = { (e) => e.preventDefault() }
-            onDragEnd = { (e) => e.drop(e) } >
+            onDragEnd = { (e) => drop(e) } >
           { generateMusicList() }
         </ul>
       </div>
