@@ -174,7 +174,7 @@ body {
   
   height: 0.5em;
   
-  background-color: #89888F;
+  background-color: #ececec;
   outline: none;
   border-radius: 0.25em;
   cursor: pointer;
@@ -197,8 +197,8 @@ body {
   -webkit-appearance: none;
   width: 0px;
   height: 0px;
-  background-color: black;
-  box-shadow: -20em 0 0 20em black;
+  background-color: var(--purple);
+  box-shadow: -20em 0 0 20em var(--purple);
 }
 
 
@@ -290,11 +290,12 @@ body {
   font-size: 0.8em;
   font-weight: lighter;
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   opacity: 0.8;
 }
 
 .hov-music-control-section {
+  width: 20em;
   height: auto;
   display: flex;
   gap: 0.5em;
@@ -304,45 +305,45 @@ body {
 }
 
 .hov-music-bar {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 0.14em;
+  border-radius: 0.07em;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  
+  background-color: #ddd;
+  outline: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  overflow:hidden;
+  animation-fill-mode: forwards;
+  transition-duration: 0.2s;
+}
+.hov-music-bar-wrapper {
   display: flex;
   align-items: center;
-  width: 20em;
-  height: 0.06em;
-}
-
-.hov-music-time-bar {
-  position: relative;
-  background-color: black;
-  width: 0%;
-  height: 100%;
-  border-radius: 0.06em;
-}
-
-.hov-music-controller {
-  position: absolute;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2em;
-  height: 2em;
-  right: -1em;
-  top: -1em;
+  justify-content: stretch;
+  width: 100%;
+  height: 0.8em;
   cursor: pointer;
 }
 
-.hov-music-controller-handle {
-  width: 0.7em;
-  height: 0.7em;
-  border-radius: 2em;
-  background-color: #89888F;
+.hov-music-bar-wrapper:hover > .hov-music-bar {
+  height: 0.5em;
+  border-radius: 0.25em;
+  background-color: #ededed;
+  cursor: pointer;
 }
 
-.hov-music-rest-bar {
-  background-color: #89888F;
-  flex: auto;
-  height: 100%;
-  border-radius: 0.06em;
+.hov-music-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0px;
+  height: 0px;
+  background-color: var(--purple);
+  box-shadow: -20em 0 0 20em var(--purple);
 }
 
 .hov-music-buttons { 
@@ -365,6 +366,7 @@ body {
   cursor: pointer;
   transition-duration: 0.5s;
 }
+
 .hov-music-buttons button img {
   opacity: 0.5;
   width: 2em;
@@ -388,6 +390,7 @@ body {
 .hov-music-time {
   display: flex;
   width: 20em;
+  margin-top: -0.5em;
   justify-content: stretch;
   justify-items: space-between;
 }

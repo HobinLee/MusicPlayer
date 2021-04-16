@@ -1,18 +1,11 @@
-import { useState, useEffect } from 'react';
-import MusicTimeBar from './MusicTimeBar'
+import { useEffect, useState } from 'react';
 
-const MusicController = ({ audio }) => {
-  const [currentTime, setCurrentTIme] = useState(audio.currentTime);
-  const [finishTime, setFinishTime] = useState(audio.duration);
-
-  useEffect(() => {
-    setCurrentTIme(audio.currentTime);
-    setFinishTime(audio.duration);
-
-    audio.ontimeupdate = () => {
-      setCurrentTIme(audio.currentTime);
-    };
-  }, [audio]);
+const MusicController = ({ currentTime, finishTime, currMusic }) => {
+  useEffect(() => {},[currentTime])
+  
+  const handleMusicTime = (e) => {
+    currMusic.audio.currentTime = e * currMusic.audio.duration / 100;
+  }
 
   const timeToString = (time) => {
     if (!time) return '0:00';
@@ -25,10 +18,13 @@ const MusicController = ({ audio }) => {
 
   return (
     <div className = 'hov-music-control-section'>
-      <audio src = {audio}/>
-        <div className = 'hov-music-bar'>
-        <MusicTimeBar currentTime = { currentTime } finishTime = { finishTime } />
-        <div className = 'hov-music-rest-bar'/>
+      <div className = 'hov-music-bar-wrapper'>
+        <input className = "hov-music-bar"
+              type = "range"
+              min = "0" max = "100"
+              value = {currMusic.audio.duration ? (currMusic.audio.currentTime / currMusic.audio.duration * 100) : 0}
+              onChange = {(e) => handleMusicTime(e.target.value)}
+        />
       </div>
       <div className = 'hov-music-time'>
         <div className = 'hov-music-current-time'>{ timeToString(currentTime) }</div>
