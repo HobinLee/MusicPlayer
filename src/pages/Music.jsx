@@ -44,6 +44,8 @@ const MusicPage = () => {
   const changeMusic = (next) => {
     let curr = musicIndex;
   
+    console.log(curr, musicList.findIndex((music) => music === currMusic));
+
     if(next) {
       curr ++;
       if (curr === musicList.length) {

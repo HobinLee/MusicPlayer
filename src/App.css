@@ -16,8 +16,9 @@ body {
 }
 
 .hov-page {
-  width: 100%;
-  height: 100vh;
+  width: calc(100% - 100px);
+  height: calc(100vh - 100px);
+  padding: 50px;
 }
 
 .hov-content-wrapper {

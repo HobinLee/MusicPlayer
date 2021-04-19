@@ -77,7 +77,7 @@ const MusicPlayer = ({ currMusic, listVisible, listVisibleSwitch, changeMusic}) 
     currMusic.audio().currentTime = targetTime;
   }
   
-  const handleEndMusic = () => { play && changeMusic(true) };
+  const handleEndMusic = () => { changeMusic(true) };
 
   const handlePlay = () => {
     //음악이 재생중이면 멈추고 멈춰있다면 재생하기
