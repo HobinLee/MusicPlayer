@@ -8,12 +8,14 @@ import { setMusicIndex, setMusicList } from '../store/modules/music';
 
 const MusicPage = () => {
   const dispatch = useDispatch();
-  const { musicIndex, currentMusic, musicList } = useSelector(state => state);
+  const { currentMusic, musicList } = useSelector(state => state);
 
   useEffect(() => {
-    dispatch(setMusicList(MusicManager.getMusicList()));
-    dispatch(setMusicIndex(0));
-  }, [])
+    if (musicList === null) {
+      dispatch(setMusicList(MusicManager.getMusicList()));
+      dispatch(setMusicIndex(0));
+    }
+  })
   
   const [listVisible, setListVisible] = useState(false);
   const [picked, setPicked] = useState(null);
@@ -24,7 +26,7 @@ const MusicPage = () => {
   }
 
   const generateMusicList = () => {
-    if (musicList.length > 0) {
+    if (musicList) {
       return musicList.map((music, index) => createMusicElement(music, index));
     } else {
       return null;

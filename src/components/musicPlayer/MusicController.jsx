@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { setMusicIndex } from '../../store/modules/music';
-
-const JUMP_TIME = 5;
 
 const MusicController = ({ currentTime, finishTime }) => {
   const { currentMusic } = useSelector(state => state);

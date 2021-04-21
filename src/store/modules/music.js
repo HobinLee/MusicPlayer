@@ -4,7 +4,7 @@ const SET_MUSICLIST = 'SET_MUSICLIST';
 const initialState = {
   musicIndex: 0,
   currentMusic: null,
-  musicList: []
+  musicList: null,
 }
 
 export const setMusicIndex = (newIndex) => ({type: SET_MUSIC, musicIndex: newIndex});
