@@ -22,17 +22,13 @@ const reducer = (state = initialState, action) => {
     case SET_MUSICLIST:
       return {
         ...state,
-        musicList: action.musicList,
-        musicIndex: findMusicIndex()
+        musicList: [...action.musicList],
+        musicIndex: action.musicList.findIndex((music) => music === state.currentMusic)
       }
 
     default:
       return state;
   }
-}
-
-const findMusicIndex = () => {
-  return 0;
 }
 
 export default reducer;

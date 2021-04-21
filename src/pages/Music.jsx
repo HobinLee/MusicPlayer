@@ -5,11 +5,11 @@ import { MusicManager } from '../components/musicPlayer/MusicList';
 import DragIcon from "../rsc/uicons-regular-rounded/svg/fi-rr-interlining.svg";
 import { useDispatch, useSelector } from 'react-redux';
 import { setMusicIndex, setMusicList } from '../store/modules/music';
-import { getByDisplayValue } from '@testing-library/dom';
 
 const MusicPage = () => {
   const dispatch = useDispatch();
   const { musicIndex, currentMusic, musicList } = useSelector(state => state);
+
   useEffect(() => {
     dispatch(setMusicList(MusicManager.getMusicList()));
     dispatch(setMusicIndex(0));
@@ -43,26 +43,6 @@ const MusicPage = () => {
           <img src = {DragIcon} alt = "order-change-icon"/>
         </div>
       </li>);
-  }
-
-  const changeMusic = (next) => {
-    let curr = musicIndex;
-  
-    console.log(curr, currentMusic.findIndex((music) => music === currentMusic));
-
-    if(next) {
-      curr ++;
-      if (curr === musicList.length) {
-        curr = 0;
-      }
-    } else {
-      curr --;
-      if (curr < 0) {
-        curr = musicList.length - 1;
-      }
-    }
-
-    dispatch(setMusicIndex(curr));
   }
 
   const dragStart = (e) => {
@@ -119,8 +99,7 @@ const MusicPage = () => {
 
     list[after] = beforeMusic;
 
-    setMusicList(list);
-    setMusicIndex(list.findIndex((music) => music === currentMusic));
+    dispatch(setMusicList(list));
   }
 
   const jumpMusic = (index) => {
@@ -131,7 +110,7 @@ const MusicPage = () => {
     <div className = 'hov-music-contents-wrapper'>
       {
         currentMusic &&
-        <MusicPlayer currMusic = {currentMusic} listVisible = {listVisible} listVisibleSwitch = {() => switchListVisible()} changeMusic={(next) => changeMusic(next)}/>
+        <MusicPlayer listVisible = {listVisible} listVisibleSwitch = {() => switchListVisible()}/>
       }
       <div className = {listVisible ? 'hov-music-list-wrapper-show' : 'hov-music-list-wrapper-hide'}>
         <ul className = 'hov-music-play-list'

@@ -9,10 +9,15 @@ import PrevIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-rewind.svg';
 import NextIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-forward.svg';
 import PlayIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-play.svg';
 import PauseIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-pause.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMusicIndex } from '../../store/modules/music';
 
 const JUMP_TIME = 5;
 
-const MusicPlayer = ({ currMusic, listVisible, listVisibleSwitch, changeMusic}) => {
+const MusicPlayer = ({ listVisible, listVisibleSwitch }) => {
+  const dispatch = useDispatch();
+  const { musicIndex, currentMusic, musicList } = useSelector(state => state);
+
   const [prevAudio, setPrevAudio] = useState(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [finishTime, setFinishTime] = useState(null);
@@ -28,60 +33,78 @@ const MusicPlayer = ({ currMusic, listVisible, listVisibleSwitch, changeMusic}) 
     if (prevAudio && play) {
       prevAudio.pause();
       prevAudio.currentTime = 0;
-      currMusic.audio().play();
+      currentMusic.audio().play();
     }
 
-    if(currMusic.audio().duration) {
+    if(currentMusic.audio().duration) {
       initAudio();
     } else {
-      currMusic.audio().onloadedmetadata = initAudio;
+      currentMusic.audio().onloadedmetadata = initAudio;
     }
-  },[currMusic]);
+  },[currentMusic]);
 
   useEffect(() => {
-    currMusic.audio().ontimeupdate = handleMusicProgress;
+    currentMusic.audio().ontimeupdate = handleMusicProgress;
   },[jumpBTNPressTime])
 
   function handleMusicProgress () {
     if (!jumpBTNPressTime || jumpThreshold()) {
-      setCurrentTime(currMusic.audio().currentTime);
+      setCurrentTime(currentMusic.audio().currentTime);
     } else {
       jumpPlayTime();
     }
   }
 
   function initAudio() {
-    currMusic.audio().currentTime = 0;
-    currMusic.audio().volume = volume / 100;
-    currMusic.audio().ontimeupdate = handleMusicProgress;
-    currMusic.audio().onended = handleEndMusic;
+    currentMusic.audio().currentTime = 0;
+    currentMusic.audio().volume = volume / 100;
+    currentMusic.audio().ontimeupdate = handleMusicProgress;
+    currentMusic.audio().onended = handleEndMusic;
 
     setCurrentTime(0);
-    setPrevAudio(currMusic.audio());
-    setFinishTime(currMusic.audio().duration);
+    setPrevAudio(currentMusic.audio());
+    setFinishTime(currentMusic.audio().duration);
   }
 
   function jumpPlayTime() {
     const now = new Date().getTime();
-    let targetTime = currMusic.audio().currentTime + JUMP_TIME * jumpDirection;
+    let targetTime = currentMusic.audio().currentTime + JUMP_TIME * jumpDirection;
 
     setJumpTime(true);
   
-    if (targetTime > currMusic.audio().duration) {
-      targetTime = currMusic.audio().duration;
+    if (targetTime > currentMusic.audio().duration) {
+      targetTime = currentMusic.audio().duration;
       releaseJumpBTN();
     } else {
       setBTNPressTime(now);
     }
     
-    currMusic.audio().currentTime = targetTime;
+    currentMusic.audio().currentTime = targetTime;
   }
-  
+
+  const changeMusic = (next) => {
+    let curr = musicIndex;
+
+    if(next) {
+      curr ++;
+      if (curr === musicList.length) {
+        curr = 0;
+      }
+    } else {
+      curr --;
+      if (curr < 0) {
+        curr = musicList.length - 1;
+      }
+    }
+
+    dispatch(setMusicIndex(curr));
+  }
+
   const handleEndMusic = () => { changeMusic(true) };
 
   const handlePlay = () => {
     //음악이 재생중이면 멈추고 멈춰있다면 재생하기
-    play ? currMusic.audio()?.pause() : currMusic.audio()?.play();
+    play ? currentMusic.audio()?.pause() : currentMusic.audio()?.play();
 
     setPlay(!play);
   }
@@ -91,7 +114,7 @@ const MusicPlayer = ({ currMusic, listVisible, listVisibleSwitch, changeMusic}) 
   
   const handleVolume = (volume) => {
     setVolume(volume);
-    currMusic.audio().volume = volume / 100;
+    currentMusic.audio().volume = volume / 100;
   }
 
   function jumpThreshold() {
@@ -121,14 +144,14 @@ const MusicPlayer = ({ currMusic, listVisible, listVisibleSwitch, changeMusic}) 
   return (
     <div className = 'hov-music-player-wrapper'>
       <div className = { listVisible ? 'hov-music-player-contents-with-list' : 'hov-music-player-contents' }>
-        <MusicCover currMusic = { currMusic }/>
-        <MusicTitle currMusic = { currMusic }/>
-        <MusicController currentTime = { currentTime } finishTime = { finishTime } currMusic = { currMusic }/>
+        <MusicCover currentMusic = { currentMusic }/>
+        <MusicTitle currentMusic = { currentMusic }/>
+        <MusicController currentTime = { currentTime } finishTime = { finishTime }/>
       </div>
       
       <div className = 'hov-music-buttons'>
         <div className = "hov-music-volume-controller"
-              style={volumeControl? { display: 'flex' } : { display: 'none' }}>
+              style = { volumeControl? { display: 'flex' } : { display: 'none' } }>
           <h3 className = "hov-music-current-volume">{ volume }</h3>
           <input className = "hov-music-volume-controller-handle"
                   type = "range"
@@ -138,20 +161,20 @@ const MusicPlayer = ({ currMusic, listVisible, listVisibleSwitch, changeMusic}) 
           />
         </div>
         <button className = 'hov-music-list' onClick = { listVisibleSwitch }
-                style={ volumeControl? { display: 'none' } : { display: 'flex' } }>
-          <img src = {ListIcon} alt = 'menu' style={{ opacity : listVisible ? 1 : 0.5}}/>
+                style = { volumeControl? { display: 'none' } : { display: 'flex' } }>
+          <img src = { ListIcon } alt = 'menu' style={{ opacity : listVisible ? 1 : 0.5}}/>
         </button>
-        <button className = 'hov-music-prev' style={volumeControl? {display: 'none'} : {display: 'flex'}}>
-          <img src = {PrevIcon} alt = 'prev' draggable = 'false' onMouseDown = {() => pressJumpBTN(-1)} onMouseOut={() => jumpTime && releaseJumpBTN()} onMouseUp={releaseJumpBTN}/>
+        <button className = 'hov-music-prev' style={ volumeControl? { display: 'none' } : {display: 'flex'} }>
+          <img src = { PrevIcon } alt = 'prev' draggable = 'false' onMouseDown = {() => pressJumpBTN(-1)} onMouseOut = {() => jumpTime && releaseJumpBTN()} onMouseUp = {releaseJumpBTN}/>
         </button>
-        <button className = 'hov-music-play' style={volumeControl? {display: 'none'} : {display: 'flex'}}>
-          <img src = {play ? PauseIcon : PlayIcon} alt = 'play' onClick = {handlePlay}/>
+        <button className = 'hov-music-play' style={ volumeControl? { display: 'none' } : {display: 'flex'} }>
+          <img src = { play ? PauseIcon : PlayIcon } alt = 'play' onClick = {handlePlay}/>
         </button>
-        <button className = 'hov-music-next' style={volumeControl? {display: 'none'} : {display: 'flex'}}>
-          <img src = {NextIcon} alt = 'next' draggable = 'false' onMouseDown = {() => pressJumpBTN(1)} onMouseOut={() => jumpTime && releaseJumpBTN()} onMouseUp={releaseJumpBTN}/>
+        <button className = 'hov-music-next' style={ volumeControl? { display: 'none' } : {display: 'flex'} }>
+          <img src = { NextIcon } alt = 'next' draggable = 'false' onMouseDown = {() => pressJumpBTN(1)} onMouseOut = {() => jumpTime && releaseJumpBTN()} onMouseUp = {releaseJumpBTN}/>
         </button>
         <button className = 'hov-music-volume' onClick = { switchVolume }>
-          <img src = {VolumeIcon} alt = 'volume' style={volumeControl? {opacity: '1'} : {opacity: '0.5'}}/>
+          <img src = { VolumeIcon } alt = 'volume' style={ volumeControl? { opacity: '1' } : { opacity: '0.5' } }/>
         </button>
       </div>
     </div>

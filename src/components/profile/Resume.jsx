@@ -15,11 +15,11 @@ const resumeList = [
 ]
 const Resume = () => {
   const generate = () => {
-    return resumeList.map(data => createList(data))
+    return resumeList.map((data, index) => createList(data, index))
   }
 
-  const createList = (data) => {
-    return <li>
+  const createList = (data, index) => {
+    return <li key = {index}>
       <div>{data.time}</div>
       <div>{data.content}</div>
     </li>

@@ -1,8 +1,8 @@
-const MusicTitle = (props) => {
+const MusicTitle = ({ currentMusic }) => {
   return (
     <div className = 'hov-music-info-section'>
-      <div className = 'hov-music-music-title'>{props.currMusic?.title}</div>
-      <div className = 'hov-music-music-singer'>{props.currMusic?.singer}</div>
+      <div className = 'hov-music-music-title'>{currentMusic?.title}</div>
+      <div className = 'hov-music-music-singer'>{currentMusic?.singer}</div>
     </div>
   );
 }
