@@ -28,20 +28,33 @@ const MusicPlayer = ({ listVisible, listVisibleSwitch }) => {
   const [volumeControl, setVolumeControl] = useState(false);
   const [volume, setVolume] = useState(50);
 
-  useEffect(() => {
-    //이전 음악이 만약 재생 중이라면
-    if (prevAudio && play) {
-      prevAudio.pause();
-      prevAudio.currentTime = 0;
-      currentMusic.audio().play();
-    }
+  const initAudio = () => {
+    currentMusic.audio().currentTime = 0;
+    currentMusic.audio().volume = volume / 100;
+    currentMusic.audio().ontimeupdate = handleMusicProgress;
+    currentMusic.audio().onended = handleEndMusic;
 
-    if(currentMusic.audio().duration) {
-      initAudio();
-    } else {
-      currentMusic.audio().onloadedmetadata = initAudio;
+    setCurrentTime(0);
+    setPrevAudio(currentMusic.audio());
+    setFinishTime(currentMusic.audio().duration);
+  }
+
+  useEffect(() => {
+    if(prevAudio !== currentMusic.audio()) {
+      //이전 음악이 만약 재생 중이라면
+      if (prevAudio && play) {
+        prevAudio.pause();
+        prevAudio.currentTime = 0;
+        currentMusic.audio().play();
+      }
+  
+      if(currentMusic.audio().duration) {
+        initAudio();
+      } else {
+        currentMusic.audio().onloadedmetadata = initAudio;
+      }
     }
-  },[currentMusic]);
+  },[initAudio, play, prevAudio, currentMusic]);
 
   useEffect(() => {
     currentMusic.audio().ontimeupdate = handleMusicProgress;
@@ -53,17 +66,6 @@ const MusicPlayer = ({ listVisible, listVisibleSwitch }) => {
     } else {
       jumpPlayTime();
     }
-  }
-
-  function initAudio() {
-    currentMusic.audio().currentTime = 0;
-    currentMusic.audio().volume = volume / 100;
-    currentMusic.audio().ontimeupdate = handleMusicProgress;
-    currentMusic.audio().onended = handleEndMusic;
-
-    setCurrentTime(0);
-    setPrevAudio(currentMusic.audio());
-    setFinishTime(currentMusic.audio().duration);
   }
 
   function jumpPlayTime() {

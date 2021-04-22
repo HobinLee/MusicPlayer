@@ -7,18 +7,27 @@
   pointer-events: none;
 }
 :root {
-  --purple: rgb(100,0,175);
+  --purple: rgb(223, 207, 189);
 }
 body {
-  background-color: white;
+  height: 100vh;
+  background-color: var(--purple);
   position: relative;
-  overflow: hidden;
+}
+
+.hov-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+  height: 100vh;
 }
 
 .hov-page {
-  width: calc(100% - 100px);
-  height: calc(100vh - 100px);
-  padding: 50px;
+  width: calc(100vw - 150px);
+  height: calc(100vh - 150px);
+  border-radius: 50px;
+  background-color: white;
 }
 
 .hov-content-wrapper {

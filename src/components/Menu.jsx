@@ -1,4 +1,6 @@
-import '../styles/menu.css'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/menu.css';
 
 import indexOn from "../rsc/menu_icon/home_selected.svg";
 import indexOff from "../rsc/menu_icon/home.svg"; 
@@ -8,14 +10,12 @@ import musicOn from "../rsc/menu_icon/music_selected.svg";
 import musicOff from "../rsc/uicons-regular-rounded/svg/fi-rr-music.svg";
 
 const Menu = () => {
-  const handleBTNClick = () => {
-    console.log('click');
-  }
+  const [location, setLocation] = useState('');
 
   const createBTNs = () => {
     const menus = [
       {
-        title: "index",
+        title: "",
         srcOn: indexOn,
         srcOff: indexOff,
       },
@@ -31,10 +31,10 @@ const Menu = () => {
     }];
   
     return menus.map((menu) => 
-        <button className = "hov-menu-button" onClick = {handleBTNClick} key={menu.title}>
-          <img src = {menu.srcOff} alt = {menu.title}></img>
-        </button>
-      );
+
+    <Link className = "hov-menu-button" onClick={() => setLocation(menu.title)} to={`/${menu.title}`} key={menu.title}>
+      <img src = {location === menu.title ? menu.srcOn : menu.srcOff} alt = {menu.title}></img>
+    </Link> );
   }
 
   return (

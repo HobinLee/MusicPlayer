@@ -109,7 +109,7 @@ const MusicPage = () => {
   }
 
   return (
-    <div className = 'hov-music-contents-wrapper'>
+    <div className = 'hov-page hov-music-contents-wrapper'>
       {
         currentMusic &&
         <MusicPlayer listVisible = {listVisible} listVisibleSwitch = {() => switchListVisible()}/>
