@@ -2,11 +2,6 @@ body {
   background-color: white;
 }
 
-.hov-music-contents-wrapper {
-  height: calc(100vh - 80px);
-  padding: 40px 0px;
-}
-
 @media screen and (min-width: 821px) {
   .hov-music-contents-wrapper {
     display: flex;
@@ -26,6 +21,7 @@ body {
     max-width: 100%;
     height: 80vh;
     transition: max-width 0.5s ease-out;
+    overflow-y: auto;
   }
   .hov-music-cover-image img{
     position: absolute;
@@ -87,6 +83,7 @@ body {
     height: 80vh;
     max-width: 100%;
     padding-bottom: 20px;
+    overflow-y: auto;
   }
   .hov-music-cover-image img{
     position: absolute;
@@ -259,7 +256,8 @@ body {
 
 .hov-music-play-list {
   display: flex;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   flex-direction: column;
   justify-content: flex-end;
   justify-items: center;

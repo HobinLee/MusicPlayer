@@ -1,5 +1,6 @@
 .hov-menu-wrapper {
   width: 2em;
+  padding: 2em 0.5em;
   display: flex;
   gap: 1em;
   flex-wrap: wrap;
@@ -7,6 +8,8 @@
   justify-items: center;
   align-content: flex-end;
   align-items: flex-end;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1.5em;
 }
 
 .hov-menu-button {

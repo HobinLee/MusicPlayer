@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 :root {
-  --purple: rgb(223, 207, 189);
+  --purple: rgb(67, 22, 102);
 }
 body {
   height: 100vh;
@@ -18,16 +18,19 @@ body {
 .hov-wrapper{
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 100vw;
+  justify-content: space-between;
+  padding: 0px 40px;
+  width: calc(100vw - 80px);
   height: 100vh;
 }
 
 .hov-page {
-  width: calc(100vw - 150px);
+  width: calc(100vw - 240px);
   height: calc(100vh - 150px);
-  border-radius: 50px;
+  padding: 40px;
+  border-radius: 30px;
   background-color: white;
+  overflow: scroll;
 }
 
 .hov-content-wrapper {
@@ -35,18 +38,6 @@ body {
   height: auto;
   transition-duration: 1s;
   position: absolute;
-}
-
-.page1 {
-  top: 0px;
-}
-
-.page2 {
-  top: -100vh;
-}
-
-.page3 {
-  top: -200vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
