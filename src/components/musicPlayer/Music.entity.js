@@ -9,7 +9,6 @@ export class Music {
         return this.audioFile;
        } else {
           this.audioFile = new Audio(this.src);
-          console.log('audio load');
           return this.audioFile;
        }
     }

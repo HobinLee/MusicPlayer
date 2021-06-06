@@ -162,8 +162,7 @@ const MusicPlayer = ({ listVisible, listVisibleSwitch }) => {
                   onChange = {(e) => handleVolume(e.target.value)}
           />
         </div>
-        <button className = 'hov-music-list' onClick = { listVisibleSwitch }
-                style = { volumeControl? { display: 'none' } : { display: 'flex' } }>
+        <button className = 'hov-music-list' onClick = { listVisibleSwitch } style = { volumeControl? { display: 'none' } : { display: 'flex' } }>
           <img src = { ListIcon } alt = 'menu' style={{ opacity : listVisible ? 1 : 0.5}}/>
         </button>
         <button className = 'hov-music-prev' style={ volumeControl? { display: 'none' } : {display: 'flex'} }>

@@ -6,9 +6,6 @@
   height: 40vmin;
   pointer-events: none;
 }
-:root {
-  --purple: rgb(67, 22, 102);
-}
 body {
   height: 100vh;
   background-color: var(--purple);
@@ -19,14 +16,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 40px;
-  width: calc(100vw - 80px);
+  width: 100vw;
   height: 100vh;
 }
 
 .hov-page {
-  width: calc(100vw - 240px);
-  height: calc(100vh - 150px);
+  width: calc(100vw - 80px);
+  height: calc(100vh - 80px);
   padding: 40px;
   border-radius: 30px;
   background-color: white;

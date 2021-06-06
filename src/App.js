@@ -10,6 +10,13 @@ const App = () => {
   return (
     <div className="hov-wrapper">
       <Route exact path="/" 
+        render={() => <MusicPage/>}
+      />
+    </div>
+  );
+  /*
+    <div className="hov-wrapper">
+      <Route exact path="/" 
         render={() => <MainPage/>}
       />
       <Route path="/profile" 
@@ -20,7 +27,7 @@ const App = () => {
       />
       <Menu/>
     </div>
-  );
+  */
 }
 
 export default App;
