@@ -50,7 +50,7 @@ const MusicPage = () => {
   const dragStart = (e) => {
     let element = e.target;
     e.stopPropagation();
-    console.log(e.target);
+    
     if(element.nodeName === 'UL')
       return;
        
