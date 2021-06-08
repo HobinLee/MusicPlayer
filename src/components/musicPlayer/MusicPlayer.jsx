@@ -166,13 +166,13 @@ const MusicPlayer = ({ listVisible, listVisibleSwitch }) => {
           <img src = { ListIcon } alt = 'menu' style={{ opacity : listVisible ? 1 : 0.5}}/>
         </button>
         <button className = 'hov-music-prev' style={ volumeControl? { display: 'none' } : {display: 'flex'} }>
-          <img src = { PrevIcon } alt = 'prev' draggable = 'false' onMouseDown = {() => pressJumpBTN(-1)} onMouseOut = {() => jumpTime && releaseJumpBTN()} onMouseUp = {releaseJumpBTN}/>
+          <img src = { PrevIcon } alt = 'prev' draggable = 'false' onTouchStart={() => pressJumpBTN(-1)} onTouchEnd={() => jumpTime && releaseJumpBTN()} onTouchCancel = {() => jumpTime && releaseJumpBTN()} onMouseDown = {() => pressJumpBTN(-1)} onMouseOut = {() => jumpTime && releaseJumpBTN()} onMouseUp = {releaseJumpBTN}/>
         </button>
         <button className = 'hov-music-play' style={ volumeControl? { display: 'none' } : {display: 'flex'} }>
           <img src = { play ? PauseIcon : PlayIcon } alt = 'play' onClick = {handlePlay}/>
         </button>
         <button className = 'hov-music-next' style={ volumeControl? { display: 'none' } : {display: 'flex'} }>
-          <img src = { NextIcon } alt = 'next' draggable = 'false' onMouseDown = {() => pressJumpBTN(1)} onMouseOut = {() => jumpTime && releaseJumpBTN()} onMouseUp = {releaseJumpBTN}/>
+          <img src = { NextIcon } alt = 'next' draggable = 'false' onTouchStart={() => pressJumpBTN(1)} onTouchEnd={() => jumpTime && releaseJumpBTN()} onTouchCancel = {() => jumpTime && releaseJumpBTN()} onMouseDown = {() => pressJumpBTN(1)} onMouseOut = {() => jumpTime && releaseJumpBTN()} onMouseUp = {releaseJumpBTN}/>
         </button>
         <button className = 'hov-music-volume' onClick = { switchVolume }>
           <img src = { VolumeIcon } alt = 'volume' style={ volumeControl? { opacity: '1' } : { opacity: '0.5' } }/>

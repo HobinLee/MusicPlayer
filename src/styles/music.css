@@ -23,7 +23,7 @@ body {
     transition: max-width 0.5s ease-out;
     overflow-y: auto;
   }
-  .hov-music-cover-image img{
+  .hov-music-cover-image img {
     position: absolute;
     top: calc(50% - 10em);
     left: calc(50% - 10em);
@@ -87,7 +87,7 @@ body {
   }
   .hov-music-cover-image img{
     position: absolute;
-    top: calc(50% - 8em);
+    top: 100px;
     left: calc(50% - 8em);
     filter: none;
     width: 16em;
@@ -115,6 +115,12 @@ body {
   }
   .hov-music-player-contents-with-list {
     display: none;
+  }
+  .hov-music-bar-wrapper:focus > .hov-music-bar {
+    height: 0.5em;
+    border-radius: 0.25em;
+    background-color: #ededed;
+    cursor: pointer;
   }
 }
 .hov-music-cover-section{
@@ -332,6 +338,7 @@ body {
   background-color: #ededed;
   cursor: pointer;
 }
+
 
 .hov-music-bar::-webkit-slider-thumb {
   -webkit-appearance: none;

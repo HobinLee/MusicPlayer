@@ -35,21 +35,22 @@ const MusicPage = () => {
 
   const createMusicElement = (music, index) => {
     return (
-      <li className = "hov-music-element" key = {music.title} onClick={() => jumpMusic(index)}>
-        <img className = "hov-music-element-thumbnail" src = {music.img} alt={music.title}/>
+      <li className = "hov-music-element" draggable = 'true' key = {music.title} onClick={() => jumpMusic(index)}>
+        <img className = "hov-music-element-thumbnail" draggable = 'false'  src = {music.img} alt={music.title}/>
         <div className = "hov-music-element-info">
           <h3 style={{ fontWeight: music.title === currentMusic.title ? 'bolder' : 'lighter'}}>{music.title}</h3>
           <h4 style={{ fontWeight: music.title === currentMusic.title ? 'bolder' : 'lighter'}}>{music.singer}</h4>
         </div>
         <div className = "hov-music-element-move">
-          <img src = {DragIcon} alt = "order-change-icon"/>
+          <img src = {DragIcon} draggable = 'false' alt = "order-change-icon"/>
         </div>
       </li>);
   }
 
   const dragStart = (e) => {
     let element = e.target;
-
+    e.stopPropagation();
+    console.log(e.target);
     if(element.nodeName === 'UL')
       return;
        
