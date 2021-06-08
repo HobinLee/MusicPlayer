@@ -49,10 +49,11 @@ const MusicPage = () => {
 
   const dragStart = (e) => {
     let element = e.target;
-    e.stopPropagation();
-    
+
     if(element.nodeName === 'UL')
       return;
+
+    e.stopPropagation();
        
     while(element.nodeName !== 'LI') {
       element = element.parentNode;
@@ -69,6 +70,8 @@ const MusicPage = () => {
     if(element.nodeName === 'UL')
       return;
   
+    e.stopPropagation();
+
     while(element.nodeName !== 'LI') {
       element = element.parentNode;
     }
