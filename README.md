@@ -1,4 +1,6 @@
-# 🎧  나만의 취향을 담은 뮤직 플레이어 앱 (https://music.leehov.in)
+# 🎧  나만의 취향을 담은 뮤직 플레이어 앱
+
+### 링크 (https://music.leehov.in)
 
 <img width="1440" alt="스크린샷 2021-06-10 오전 10 26 57" src="https://user-images.githubusercontent.com/35447853/121450292-6b945680-c9d6-11eb-88bf-696d0ce64cef.png">
 
@@ -8,7 +10,7 @@
 
 ### 스펙
 * HTML5 / CSS3 / ECMAScript 2015
-* React JS / Redux / Styled-component
+* React JS / Redux / 스타일 구성 요소
 * AWS EC2 / S3 / nginx
 
 ## Project
