@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# 🎧  나만의 취향을 담은 뮤직 플레이어 앱 (https://music.leehov.in)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="1440" alt="스크린샷 2021-06-10 오전 10 26 57" src="https://user-images.githubusercontent.com/35447853/121450292-6b945680-c9d6-11eb-88bf-696d0ce64cef.png">
 
-## Available Scripts
+## Brief
 
-In the project directory, you can run:
+제가 좋아하는 노래들을 담아 자유롭게 들을 수 있도록 웹 플레이어
 
-### `yarn start`
+### 스펙
+* HTML5 / CSS3 / ECMAScript 2015
+* React JS / Redux / Styled-component
+* AWS EC2 / S3 / nginx
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+이 앱은 [Create React App]으로 만들어 졌습니다.(https://github.com/facebook/create-react-app).
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+해당 프로젝트를 실행하기 위해 필요한 명령어들 입니다.
+### `npm install`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+redux, styled-component등의 라이브러리를 설치 합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+개발자모드로 앱을 실행합니다.\
+앱을 확인하려면 브라우저에 [http://localhost:3000]로 접속하세요. (http://localhost:3000)
 
-### `yarn eject`
+### `num run build`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+배포 버전을 만듭니다.\
+번들링, 트랜스파일링등의 작업을 실행하고 build폴더 안에 결과물이 저장 됩니다.
