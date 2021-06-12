@@ -12,6 +12,20 @@ import { BrowserRouter } from 'react-router-dom';
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(rootReducer, devTools);
 
+const resetScreenSize = () => {
+  window.addEventListener('resize', () => setScreenSize());
+}
+
+const setScreenSize = () => {
+  let vw = window.innerWidth;
+  let vh = window.innerHeight;
+  
+  document.documentElement.style.setProperty('--vw', `${vw}px`);
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+resetScreenSize();
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

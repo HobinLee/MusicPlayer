@@ -39,7 +39,7 @@
 }
 
 .hov-profile-resume-wrapper-img > img {
-    width: 30 vw;
+    width: calc(var(--vw) * 0.3);
     max-width: 300px;
     height: 100%;
 }
@@ -51,7 +51,7 @@
 
 .hov-profile-contact ul {
     list-style: none;
-    width: 50vw;
+    width: calc(var(--vw) * 0.5);
     margin: 0;
     padding: 10px;
     border: #eee 1px solid;
