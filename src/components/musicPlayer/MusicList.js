@@ -7,17 +7,17 @@ import todayImg from '../../rsc/music-img/today.jpg';
 
 const musicInfos = [
   {
+    title: '공드리',
+    singer: '혁오',
+    src: 'https://hovlee.s3.ap-northeast-2.amazonaws.com/music/%EA%B3%B5%EB%93%9C%EB%A6%AC.mp3',
+    img: gdrImg,
+  },
+  {
     title: 'She',
     singer: '카더가든',
     src: 'https://hovlee.s3.ap-northeast-2.amazonaws.com/music/she.mp3',
     img: sheImg,
-  },
-{
-  title: '공드리',
-  singer: '혁오',
-  src: 'https://hovlee.s3.ap-northeast-2.amazonaws.com/music/%EA%B3%B5%EB%93%9C%EB%A6%AC.mp3',
-  img: gdrImg,
-},{
+  },{
   title: 'la la la lovesong',
   singer: '백예린',
   src: 'https://hovlee.s3.ap-northeast-2.amazonaws.com/music/lalalalovesong.mp3',
