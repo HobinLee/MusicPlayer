@@ -7,8 +7,14 @@ import { Route } from 'react-router-dom';
 import './App.css';
 
 const App = () => {
+  const preventClick = (e) => {
+    e.preventDefault();
+    return false;
+  }
+
   return (
-    <div className="hov-wrapper">
+    <div className="hov-wrapper"
+      onContextMenu={preventClick}>
       <Route exact path="/" 
         render={() => <MusicPage/>}
       />

@@ -32,17 +32,10 @@ const MusicPage = () => {
       return null;
     }
   }
-  
-  const preventClick = (e) => {
-    e.preventDefault();
-    return false;
-  }
 
   const createMusicElement = (music, index) => {
     return (
       <li className = "hov-music-element"
-        onContextMenu={preventClick}
-        onSelect={preventClick}
         draggable = 'true' key = {music.title} onClick={() => jumpMusic(index)}>
         <img className = "hov-music-element-thumbnail" draggable = 'false'  src = {music.img} alt={music.title}/>
         <div className = "hov-music-element-info">
