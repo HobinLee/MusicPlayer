@@ -119,16 +119,16 @@ const MusicPlayer = ({ listVisible, listVisibleSwitch }) => {
 
   const switchVolume = () => {
     if (isIOS()) {
-      if (volume) setVolume(0);
-      else setVolume(50);
+      if (volume) handleVolume(0);
+      else handleVolume(50);
     } else {
       setVolumeControl(!volumeControl);
     }
   }
   
   const handleVolume = (volume) => {
+    setVolume(volume);
     if (volume) {
-      setVolume(volume);
       currentMusic.audio().volume = volume / 100;
       currentMusic.audio().muted = false;
     } else {
