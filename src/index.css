@@ -1,7 +1,9 @@
 body {
   margin: 0;
+  background-color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: var(--vw, 100vw);
   height: var(--vh, 100vh);
   overflow-x: hidden;
 }
@@ -9,16 +11,10 @@ body {
 * {
   user-select: none;
   box-sizing: border-box;
-  touch-action: none;
+  touch-action: manipulation;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-}
-
-
-#root {
-  width: 100%;
-  height: 100%;
 }
 
 code {

@@ -24,7 +24,24 @@ const resetScreenSize = () => {
   window.addEventListener('resize', () => setScreenSize());
 }
 
-resetScreenSize();
+const removeEvent = e => {
+  e.preventDefault();
+  e.stopPropagation();
+}
+
+const disableScroll = () => {
+  document.querySelector('body').addEventListener('touchmove', removeEvent, { passive: false });
+  document.querySelector('body').addEventListener('onclick', removeEvent, { passive: false });
+  document.querySelector('body').addEventListener('mousewheel', removeEvent, { passive: false });
+}
+
+const init = () => {
+  setScreenSize();
+  resetScreenSize();
+  disableScroll();
+}
+
+init();
 
 ReactDOM.render(
   <React.StrictMode>
