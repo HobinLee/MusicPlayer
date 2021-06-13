@@ -35,6 +35,8 @@ body {
   .hov-music-player-wrapper {
     display: flex;
     flex: auto;
+    width: 100%;
+    height: auto;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
@@ -71,6 +73,7 @@ body {
     justify-items: center;
     align-items: center;
   }
+
   .hov-music-list-wrapper-hide {
     display: none;
     width: 100%;
@@ -85,6 +88,7 @@ body {
     padding-bottom: 20px;
     overflow-y: auto;
   }
+
   .hov-music-cover-image img{
     position: absolute;
     top: 100px;
@@ -92,8 +96,8 @@ body {
     filter: none;
     width: 16em;
     height: auto;
-    overflow: hidden;
   }
+
   .hov-music-player-wrapper {
     width: 100%;
     height: auto;
