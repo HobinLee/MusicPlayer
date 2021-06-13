@@ -5,6 +5,7 @@ import MusicTitle from './MusicTitle';
 
 import ListIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-list.svg';
 import VolumeIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-volume.svg';
+import MuteIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-mute.svg';
 import PrevIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-rewind.svg';
 import NextIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-forward.svg';
 import PlayIcon from '../../rsc/uicons-regular-rounded/svg/fi-rr-play.svg';
@@ -110,13 +111,29 @@ const MusicPlayer = ({ listVisible, listVisibleSwitch }) => {
 
     setPlay(!play);
   }
+  
+  const isIOS = () => {
+    return window.navigator.userAgent.includes('iPad')
+          || window.navigator.userAgent.includes('iPhone');
+  }
+
   const switchVolume = () => {
-    setVolumeControl(!volumeControl);
+    if (isIOS()) {
+      if (volume) setVolume(0);
+      else setVolume(50);
+    } else {
+      setVolumeControl(!volumeControl);
+    }
   }
   
   const handleVolume = (volume) => {
-    setVolume(volume);
-    currentMusic.audio().volume = volume / 100;
+    if (volume) {
+      setVolume(volume);
+      currentMusic.audio().volume = volume / 100;
+      currentMusic.audio().muted = false;
+    } else {
+      currentMusic.audio().muted = true;
+    }
   }
 
   function jumpThreshold() {
@@ -175,7 +192,7 @@ const MusicPlayer = ({ listVisible, listVisibleSwitch }) => {
           <img src = { NextIcon } alt = 'next' draggable = 'false' onTouchStart={() => pressJumpBTN(1)} onTouchEnd={() => jumpTime && releaseJumpBTN()} onTouchCancel = {() => jumpTime && releaseJumpBTN()} onMouseDown = {() => pressJumpBTN(1)} onMouseOut = {() => jumpTime && releaseJumpBTN()} onMouseUp = {releaseJumpBTN}/>
         </button>
         <button className = 'hov-music-volume' onClick = { switchVolume }>
-          <img src = { VolumeIcon } alt = 'volume' style={ volumeControl? { opacity: '1' } : { opacity: '0.5' } }/>
+          <img src = { (volume > 0) ? VolumeIcon : MuteIcon } alt = 'volume' style={ volumeControl? { opacity: '1' } : { opacity: '0.5' } }/>
         </button>
       </div>
     </div>
