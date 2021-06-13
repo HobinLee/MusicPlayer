@@ -57,9 +57,9 @@ const MusicController = ({ currentTime, finishTime }) => {
               onChange = {(e) => {
                 handleMusicTime(e.target.value);
               }}
+              
               onTouchStart = {initControl}
               onTouchMove = {handleControl}
-
               onTouchEnd = {() => setOffset(null)}
         />
       </div>
