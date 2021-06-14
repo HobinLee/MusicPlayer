@@ -14,7 +14,8 @@ const App = () => {
 
   return (
     <div className="hov-wrapper"
-      onContextMenu={preventClick}>
+      onContextMenu={preventClick}
+      onSelect={preventClick}>
       <Route exact path="/" 
         render={() => <MusicPage/>}
       />
