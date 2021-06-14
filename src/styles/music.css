@@ -403,7 +403,7 @@ body {
     display: block;
     width: 100%;
     height: calc(var(--vh) * 0.8)vh;
-    padding-bottom: 20px;
+    padding: 20px 0px;
     overflow-y: auto;
   }
 
@@ -425,6 +425,7 @@ body {
     justify-content: flex-end;
     align-items: center;
     align-content: center;
+    padding: 20px 0px;
   }
   
   .hov-music-player-contents {
