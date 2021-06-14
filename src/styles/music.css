@@ -453,8 +453,11 @@ body {
 
   .hov-music-bar {
     height: 0.8em;
-    border-radius: 0.25em;
-    background-color: #ededed;
-    cursor: pointer;
+    border-radius: 0.4em;
+  }
+
+  .hov-music-bar-wrapper:hover > .hov-music-bar {
+    height: 0.8em;
+    border-radius: 0.4em;
   }
 }

@@ -6,6 +6,7 @@ body {
   width: var(--vw, 100vw);
   height: var(--vh, 100vh);
   overflow-x: hidden;
+  -webkit-touch-callout: none;
 }
 
 * {

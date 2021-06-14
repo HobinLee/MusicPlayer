@@ -32,6 +32,6 @@
 
 @media screen and (max-width: 820px) {
   .hov-page {
-    padding: 20px;
+    padding: 20px 0px;
   }
 }
