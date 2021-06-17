@@ -1,6 +1,6 @@
 {
-  "name": "hovleenew",
-  "version": "0.1.0",
+  "name": "hov_music_player",
+  "version": "1.5.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

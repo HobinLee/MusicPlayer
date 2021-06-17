@@ -2,6 +2,12 @@ body {
   background-color: white;
 }
 
+.selected {
+  background-color: white;
+  box-shadow: #89888F 2px 2px 3px;
+  position: absolute;
+  opacity: 0.5;
+}
 
 
 @media screen and (min-width: 821px) {
@@ -220,6 +226,14 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+.hov-music-element-wrapper {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  width: 20em;
+  height: 2.5em;
+  cursor: pointer;
 }
 
 .hov-music-play-list > li {
